@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bfrxa2l168b5r"]
+
+[ext_resource type="Script" uid="uid://b7kqxcukvfkbg" path="res://scripts/dummy.gd" id="1_gtj52"]
+
+[node name="dummy" type="GraphNode" unique_id=2019257339]
+offset_right = 9.0
+offset_bottom = 55.0
+title = "dummy"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_gtj52")
+
+[node name="Control" type="Control" parent="." unique_id=1080787814]
+layout_mode = 2

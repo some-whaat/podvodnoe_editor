@@ -1,0 +1,34 @@
+extends Node
+
+enum DialNodeType { DIALOGUE, CHOICE, DUMMY, LOGIC }
+
+func load_json_file(file_path: String):
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if file == null:
+		push_error("Failed to open file: ", file_path)
+		return null
+
+	var json_text = file.get_as_text()
+	file.close()
+
+	var data = JSON.parse_string(json_text)
+	if data == null:
+		push_error("Failed to parse JSON from file: ", file_path)
+		return null
+
+	return data
+
+func save_to_json_file(data, file_path: String) -> bool:
+	# Convert data to JSON string
+	var json_string = JSON.stringify(data)
+
+	# Open file for writing
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+		print("File saved successfully to: ", file_path)
+		return true
+	else:
+		print("Failed to open file for writing: ", file_path)
+		return false

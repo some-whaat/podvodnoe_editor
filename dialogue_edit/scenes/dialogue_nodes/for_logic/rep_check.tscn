@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b610qtu3awf5l"]
+
+[ext_resource type="Script" uid="uid://d0ipx5j3jr5u5" path="res://rep_check.gd" id="1_srxa5"]
+
+[node name="rep_check" type="VSplitContainer" unique_id=82526240]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_srxa5")
+
+[node name="rep" type="HSplitContainer" parent="." unique_id=1025370893]
+layout_mode = 2
+split_offsets = PackedInt32Array(125)
+split_offset = 125
+
+[node name="rep_label" type="Label" parent="rep" unique_id=1725570093]
+layout_mode = 2
+text = "needed item id: "
+
+[node name="rep_num" type="SpinBox" parent="rep" unique_id=940858904]
+layout_mode = 2
+
+[node name="rep_state" type="HSplitContainer" parent="." unique_id=188238176]
+layout_mode = 2
+
+[node name="rep_state_label" type="Label" parent="rep_state" unique_id=745435310]
+layout_mode = 2
+text = "needs more or less
+repuration
+"
+vertical_alignment = 1
+
+[node name="rep_state" type="CheckButton" parent="rep_state" unique_id=104024410]
+layout_mode = 2
+button_pressed = true
+text = "more"
+
+[connection signal="toggled" from="rep_state/rep_state" to="." method="_on_rep_state_toggled"]

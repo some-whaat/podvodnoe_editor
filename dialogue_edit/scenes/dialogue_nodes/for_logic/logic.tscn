@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bardtwyd1pv8a"]
+
+[ext_resource type="Script" uid="uid://b5yjwlfiguu3m" path="res://dialogue_edit/scenes/dialogue_nodes/for_logic/logic.gd" id="1_pxg4h"]
+
+[node name="logic" type="GraphNode" unique_id=372851452]
+offset_right = 9.0
+offset_bottom = 55.0
+resizable = true
+title = "logic"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_pxg4h")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=2123005089]
+layout_mode = 2
+
+[node name="add_item_check" type="Button" parent="HSplitContainer" unique_id=615275568]
+layout_mode = 2
+text = "+ item check"
+
+[node name="add_mission_check" type="Button" parent="HSplitContainer" unique_id=543819753]
+layout_mode = 2
+text = "+ mission check"
+
+[connection signal="pressed" from="HSplitContainer/add_item_check" to="." method="_on_add_item_check_pressed"]
+[connection signal="pressed" from="HSplitContainer/add_mission_check" to="." method="_on_add_mission_check_pressed"]

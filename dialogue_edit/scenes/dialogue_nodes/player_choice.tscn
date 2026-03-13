@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://blfdh14k3d575"]
+
+[ext_resource type="Script" uid="uid://c31nvl0c17wsr" path="res://dialogue_edit/answer_question.gd" id="1_pg12j"]
+
+[node name="player_choice" type="GraphNode" unique_id=1050164604]
+offset_right = 396.0
+offset_bottom = 203.0
+size_flags_vertical = 3
+tooltip_text = "выборы, из которых игрок выбирает ответ.
+присоединять ТОЛЬКО к полю \"anwer/question\" у dialogue_line"
+resizable = true
+title = "player's answer"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = true
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("1_pg12j")
+
+[node name="more_ansv_butt" type="Button" parent="." unique_id=1781826163]
+layout_mode = 2
+text = "add new player's answer"
+
+[node name="ansv1" type="TextEdit" parent="." unique_id=1371769425]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+placeholder_text = "player's answer 1"
+
+[node name="delete_last_ansv" type="Button" parent="." unique_id=289935590]
+layout_mode = 2
+text = "delete last player's answer"
+
+[connection signal="delete_request" from="." to="." method="_on_delete_request"]
+[connection signal="pressed" from="more_ansv_butt" to="." method="_on_button_pressed"]

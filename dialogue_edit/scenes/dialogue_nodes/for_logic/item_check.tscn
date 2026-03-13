@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cxuopqy818dkj"]
+
+[ext_resource type="StyleBox" uid="uid://c5jdx1kljrbhi" path="res://styles/styleboxflat/border_style_box_flat.tres" id="1_spwr2"]
+[ext_resource type="Script" uid="uid://f317lkpam4v0" path="res://dialogue_edit/scenes/dialogue_nodes/for_logic/item_check.gd" id="2_spwr2"]
+
+[node name="item_check" type="PanelContainer" unique_id=2002082201]
+offset_top = 104.0
+offset_right = 223.0
+offset_bottom = 104.0
+theme_override_styles/panel = ExtResource("1_spwr2")
+script = ExtResource("2_spwr2")
+
+[node name="item_check" type="VSplitContainer" parent="." unique_id=1610679141]
+layout_mode = 2
+split_offsets = PackedInt32Array(31)
+split_offset = 31
+
+[node name="item_id" type="HSplitContainer" parent="item_check" unique_id=1190997222]
+layout_mode = 2
+split_offsets = PackedInt32Array(125)
+split_offset = 125
+
+[node name="item_id_label" type="Label" parent="item_check/item_id" unique_id=1013153451]
+layout_mode = 2
+text = "needed item id: "
+
+[node name="item_id" type="SpinBox" parent="item_check/item_id" unique_id=266364868]
+layout_mode = 2
+
+[node name="item_state" type="HSplitContainer" parent="item_check" unique_id=388290637]
+layout_mode = 2
+
+[node name="item_state_label" type="Label" parent="item_check/item_state" unique_id=1249034184]
+layout_mode = 2
+text = "needed item state
+"
+vertical_alignment = 1
+
+[node name="item_state" type="CheckBox" parent="item_check/item_state" unique_id=1758021612]
+layout_mode = 2
+button_pressed = true
+text = "has"
+
+[connection signal="toggled" from="item_check/item_state/item_state" to="." method="_on_item_state_toggled"]

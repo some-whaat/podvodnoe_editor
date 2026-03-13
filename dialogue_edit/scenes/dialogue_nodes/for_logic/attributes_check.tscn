@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c10lh0fargrqk"]
+
+[ext_resource type="StyleBox" uid="uid://c5jdx1kljrbhi" path="res://styles/styleboxflat/border_style_box_flat.tres" id="1_ae4rf"]
+[ext_resource type="Script" uid="uid://5tw5645jb7ln" path="res://attr_check.gd" id="1_u3f8i"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1527510957]
+offset_top = 35.0
+offset_right = 239.0
+offset_bottom = 39.0
+theme_override_styles/panel = ExtResource("1_ae4rf")
+script = ExtResource("1_u3f8i")
+
+[node name="attributes_check" type="VBoxContainer" parent="." unique_id=258656849]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="attributes_check" unique_id=1981811486]
+layout_mode = 2
+
+[node name="add_missions_check" type="Button" parent="attributes_check/HSplitContainer" unique_id=1537833489]
+layout_mode = 2
+text = "+ mission check"
+
+[node name="add_rep_check" type="Button" parent="attributes_check/HSplitContainer" unique_id=397405912]
+layout_mode = 2
+text = "+ rep check"
+
+[connection signal="pressed" from="attributes_check/HSplitContainer/add_missions_check" to="attributes_check" method="_on_add_missions_check_pressed"]
+[connection signal="pressed" from="attributes_check/HSplitContainer/add_rep_check" to="attributes_check" method="_on_add_rep_check_pressed"]

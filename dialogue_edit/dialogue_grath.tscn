@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://c3hi3j27bkw6b"]
+
+[ext_resource type="Script" uid="uid://bl1ejgtuf5h6g" path="res://dialogue_edit/dialogue_edit.gd" id="1_d8n4q"]
+[ext_resource type="PackedScene" uid="uid://bfrxa2l168b5r" path="res://dialogue_edit/scenes/dialogue_nodes/dummy.tscn" id="2_0hq8h"]
+[ext_resource type="Script" uid="uid://6cqdilljhms4" path="res://dialogue_edit/make_everything_button.gd" id="2_mw3pi"]
+[ext_resource type="Script" uid="uid://b7blnpotddnbu" path="res://dialogue_edit/extract_from_file_button.gd" id="3_144h7"]
+
+[node name="dialogue_graph" type="Control" unique_id=442134503]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphEdit" type="GraphEdit" parent="." unique_id=1409638374]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+panning_scheme = 1
+right_disconnects = true
+script = ExtResource("1_d8n4q")
+big_json_path = "res://game/NPCs.json"
+layer_name = "NPC"
+character_name = "testt"
+
+[node name="START" type="GraphNode" parent="GraphEdit" unique_id=1090824399]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 265.0
+offset_right = 175.0
+offset_bottom = 320.0
+mouse_filter = 1
+position_offset = Vector2(111, 265)
+title = "START"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="Control" type="Control" parent="GraphEdit/START" unique_id=572021442]
+layout_mode = 2
+
+[node name="dummy" parent="GraphEdit" unique_id=2019257339 instance=ExtResource("2_0hq8h")]
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 284.0
+offset_right = 1098.0
+offset_bottom = 339.0
+mouse_filter = 1
+position_offset = Vector2(1030, 284)
+state_index = -1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1913063612]
+layout_mode = 0
+offset_right = 1146.0
+offset_bottom = 42.0
+
+[node name="butt_add_dialogue_line" type="Button" parent="HBoxContainer" unique_id=1643220203]
+layout_mode = 2
+text = "add dialogue line"
+
+[node name="butt_add_player_answer" type="Button" parent="HBoxContainer" unique_id=1716471610]
+layout_mode = 2
+text = "add player's choice"
+
+[node name="butt_add_dummy" type="Button" parent="HBoxContainer" unique_id=1506049680]
+layout_mode = 2
+text = "add dummy"
+
+[node name="button_add_logic" type="Button" parent="HBoxContainer" unique_id=115308740]
+layout_mode = 2
+text = "+ logic"
+
+[node name="save_button" type="Button" parent="HBoxContainer" unique_id=1792480736]
+layout_mode = 2
+text = "save"
+script = ExtResource("2_mw3pi")
+
+[node name="FileDialog" type="FileDialog" parent="HBoxContainer/save_button" unique_id=188896444]
+oversampling_override = 1.0
+initial_position = 1
+root_subfolder = "res://data/dialogues/"
+filters = PackedStringArray("*.tres")
+
+[node name="extract_from_file_button" type="Button" parent="HBoxContainer" unique_id=1645710235]
+layout_mode = 2
+text = "extract from file"
+script = ExtResource("3_144h7")
+
+[node name="FileExtract" type="FileDialog" parent="HBoxContainer/extract_from_file_button" unique_id=300713549]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+file_mode = 0
+root_subfolder = "res://data/dialogues/"
+filters = PackedStringArray("*.tres")
+
+[connection signal="connection_request" from="GraphEdit" to="GraphEdit" method="_on_connection_request"]
+[connection signal="connection_to_empty" from="GraphEdit" to="GraphEdit" method="_on_connection_to_empty"]
+[connection signal="delete_nodes_request" from="GraphEdit" to="GraphEdit" method="_on_delete_nodes_request"]
+[connection signal="disconnection_request" from="GraphEdit" to="GraphEdit" method="_on_disconnection_request"]
+[connection signal="pressed" from="HBoxContainer/butt_add_dialogue_line" to="GraphEdit" method="_on_butt_add_dialogue_line_pressed"]
+[connection signal="pressed" from="HBoxContainer/butt_add_player_answer" to="GraphEdit" method="_on_butt_add_player_answer_pressed"]
+[connection signal="pressed" from="HBoxContainer/butt_add_dummy" to="GraphEdit" method="_on_butt_add_dummy_pressed"]
+[connection signal="pressed" from="HBoxContainer/button_add_logic" to="GraphEdit" method="_on_button_add_logic_pressed"]
+[connection signal="pressed" from="HBoxContainer/save_button" to="GraphEdit" method="_on_save_button_pressed"]
+[connection signal="file_selected" from="HBoxContainer/save_button/FileDialog" to="GraphEdit" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="HBoxContainer/extract_from_file_button" to="HBoxContainer/extract_from_file_button" method="_on_pressed"]
+[connection signal="file_selected" from="HBoxContainer/extract_from_file_button/FileExtract" to="GraphEdit" method="_on_file_extract_file_selected"]

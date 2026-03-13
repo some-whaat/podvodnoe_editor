@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dawuqxrlxxj78"]
+
+[ext_resource type="Script" uid="uid://dc6ctpko858gt" path="res://dialogue_edit/scenes/dialogue_nodes/for_logic/mission_check.gd" id="1_3km2b"]
+[ext_resource type="StyleBox" uid="uid://c5jdx1kljrbhi" path="res://styles/styleboxflat/border_style_box_flat.tres" id="1_y1yxe"]
+
+[node name="mission_check" type="PanelContainer" unique_id=1223429569]
+offset_top = 104.0
+offset_right = 247.0
+offset_bottom = 104.0
+theme_override_styles/panel = ExtResource("1_y1yxe")
+script = ExtResource("1_3km2b")
+
+[node name="mission_check" type="VSplitContainer" parent="." unique_id=20882501]
+layout_mode = 2
+split_offsets = PackedInt32Array(31)
+split_offset = 31
+
+[node name="mission_id" type="HSplitContainer" parent="mission_check" unique_id=1793627057]
+layout_mode = 2
+split_offsets = PackedInt32Array(125)
+split_offset = 125
+
+[node name="mission_id_label" type="Label" parent="mission_check/mission_id" unique_id=737196474]
+layout_mode = 2
+text = "needed mission id: "
+
+[node name="mission_id" type="SpinBox" parent="mission_check/mission_id" unique_id=2144102095]
+layout_mode = 2
+
+[node name="mission_state" type="HSplitContainer" parent="mission_check" unique_id=721360720]
+layout_mode = 2
+
+[node name="item_state_label" type="Label" parent="mission_check/mission_state" unique_id=996733154]
+layout_mode = 2
+text = "needed mission state
+"
+vertical_alignment = 1
+
+[node name="mission_state" type="CheckBox" parent="mission_check/mission_state" unique_id=1483022867]
+layout_mode = 2
+button_pressed = true
+text = "has"
+
+[connection signal="toggled" from="mission_check/mission_state/mission_state" to="mission_check" method="_on_item_state_toggled"]

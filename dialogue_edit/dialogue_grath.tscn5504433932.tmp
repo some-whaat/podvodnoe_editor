@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c3hi3j27bkw6b"]
+
+[ext_resource type="Script" uid="uid://bl1ejgtuf5h6g" path="res://addons/dialogue_grath/dialogue_edit.gd" id="1_d8n4q"]
+[ext_resource type="Script" uid="uid://6cqdilljhms4" path="res://addons/dialogue_grath/make_everything_button.gd" id="2_mw3pi"]
+
+[node name="dialogue_graph" type="Control" unique_id=442134503]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphEdit" type="GraphEdit" parent="." unique_id=1409638374]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+right_disconnects = true
+script = ExtResource("1_d8n4q")
+
+[node name="START" type="GraphNode" parent="GraphEdit" unique_id=1090824399]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 265.0
+offset_right = 175.0
+offset_bottom = 320.0
+mouse_filter = 1
+position_offset = Vector2(111, 265)
+title = "START"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="Control" type="Control" parent="GraphEdit/START" unique_id=176269874]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1913063612]
+layout_mode = 0
+offset_right = 1146.0
+offset_bottom = 42.0
+
+[node name="butt_add_dialogue_line" type="Button" parent="HBoxContainer" unique_id=1643220203]
+layout_mode = 2
+text = "добавить dialogue line"
+
+[node name="butt_add_player_answer" type="Button" parent="HBoxContainer" unique_id=1716471610]
+layout_mode = 2
+text = "добавить ответ игрока"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer" unique_id=260640806]
+layout_mode = 2
+placeholder_text = "file "
+
+[node name="make_everything_button" type="Button" parent="HBoxContainer" unique_id=1792480736]
+layout_mode = 2
+text = "make it"
+script = ExtResource("2_mw3pi")
+
+[node name="FileDialog" type="FileDialog" parent="HBoxContainer/make_everything_button" unique_id=188896444]
+oversampling_override = 1.0
+initial_position = 1
+
+[connection signal="connection_request" from="GraphEdit" to="GraphEdit" method="_on_connection_request"]
+[connection signal="disconnection_request" from="GraphEdit" to="GraphEdit" method="_on_disconnection_request"]
+[connection signal="pressed" from="HBoxContainer/butt_add_dialogue_line" to="GraphEdit" method="_on_butt_add_dialogue_line_pressed"]
+[connection signal="pressed" from="HBoxContainer/butt_add_player_answer" to="GraphEdit" method="_on_butt_add_player_answer_pressed"]
+[connection signal="pressed" from="HBoxContainer/make_everything_button" to="HBoxContainer/make_everything_button" method="_on_pressed"]
+[connection signal="file_selected" from="HBoxContainer/make_everything_button/FileDialog" to="GraphEdit" method="_on_file_dialog_file_selected"]
