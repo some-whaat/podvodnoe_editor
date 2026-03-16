@@ -81,6 +81,10 @@ text = "add dummy"
 layout_mode = 2
 text = "+ logic"
 
+[node name="button_add_npc_action" type="Button" parent="HBoxContainer" unique_id=606572628]
+layout_mode = 2
+text = "+ npc action"
+
 [node name="save_button" type="Button" parent="HBoxContainer" unique_id=1792480736]
 layout_mode = 2
 text = "save"
@@ -113,6 +117,7 @@ filters = PackedStringArray("*.tres")
 [connection signal="pressed" from="HBoxContainer/butt_add_player_answer" to="GraphEdit" method="_on_butt_add_player_answer_pressed"]
 [connection signal="pressed" from="HBoxContainer/butt_add_dummy" to="GraphEdit" method="_on_butt_add_dummy_pressed"]
 [connection signal="pressed" from="HBoxContainer/button_add_logic" to="GraphEdit" method="_on_button_add_logic_pressed"]
+[connection signal="pressed" from="HBoxContainer/button_add_npc_action" to="GraphEdit" method="_on_button_add_npc_action_pressed"]
 [connection signal="pressed" from="HBoxContainer/save_button" to="GraphEdit" method="_on_save_button_pressed"]
 [connection signal="file_selected" from="HBoxContainer/save_button/FileDialog" to="GraphEdit" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="HBoxContainer/extract_from_file_button" to="HBoxContainer/extract_from_file_button" method="_on_pressed"]

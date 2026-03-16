@@ -1,6 +1,9 @@
 extends Node
 
-enum DialNodeType { DIALOGUE, CHOICE, DUMMY, LOGIC }
+enum DialNodeType { DIALOGUE, CHOICE, DUMMY, LOGIC, NPC_ACTION }
+
+var player_data : Dictionary
+
 
 func load_json_file(file_path: String):
 	var file = FileAccess.open(file_path, FileAccess.READ)
@@ -32,3 +35,6 @@ func save_to_json_file(data, file_path: String) -> bool:
 	else:
 		print("Failed to open file for writing: ", file_path)
 		return false
+		
+func import_player_from_file(file_path: String):
+	player_data = load_json_file(file_path)

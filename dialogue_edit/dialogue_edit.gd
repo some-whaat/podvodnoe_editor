@@ -8,13 +8,15 @@ const DIALOGUE_LINE = preload("res://dialogue_edit/scenes/dialogue_nodes/dialogu
 const DUMMY = preload("res://dialogue_edit/scenes/dialogue_nodes/dummy.tscn")
 const PLAYER_CHOICE = preload("res://dialogue_edit/scenes/dialogue_nodes/player_choice.tscn")
 const LOGIC = preload("res://dialogue_edit/scenes/dialogue_nodes/for_logic/logic.tscn")
+const NPC_ACTION = preload("res://dialogue_edit/scenes/dialogue_nodes/for_action/npc_action.tscn")
 
 
 @onready var grathnode_type_to_scene : Dictionary[BroManager.DialNodeType, PackedScene] = {
 	BroManager.DialNodeType.DIALOGUE : DIALOGUE_LINE,
 	BroManager.DialNodeType.CHOICE : PLAYER_CHOICE,
 	BroManager.DialNodeType.DUMMY : DUMMY,
-	BroManager.DialNodeType.LOGIC : LOGIC
+	BroManager.DialNodeType.LOGIC : LOGIC,
+	BroManager.DialNodeType.NPC_ACTION : NPC_ACTION
 }
 
 @onready var start: GraphNode = $START
@@ -29,6 +31,9 @@ func _ready() -> void:
 	connection_request.connect(_on_connection_request)
 	disconnection_request.connect(_on_disconnection_request)
 	
+	'''!!!!!!!!!!!!ВРЕМЕННО, ПЕРЕНЕСТИ!!!!!!!!!!!!'''
+	BroManager.import_player_from_file("res://game/Player.json")
+	'''!!!!!!!!!!!!ВРЕМЕННО, ПЕРЕНЕСТИ!!!!!!!!!!!!'''
 #func get_connection_list_from_port(node : StringName, port : int):
 	#var connections = get_connection_list_from_node(node)
 	#var result = []
@@ -74,6 +79,9 @@ func _on_butt_add_player_answer_pressed() -> void:
 
 func _on_button_add_logic_pressed() -> void:
 	add_grath_node(scroll_offset + Vector2(88, 88), BroManager.DialNodeType.LOGIC)
+
+func _on_button_add_npc_action_pressed() -> void:
+	add_grath_node(scroll_offset + Vector2(88, 88), BroManager.DialNodeType.NPC_ACTION)
 
 #func _on_file_dialog_file_selected(path: String) -> void:
 	#print(path)
@@ -155,6 +163,9 @@ func save_everything():
 			BroManager.DialNodeType.DUMMY:
 				save_data[curr_node_ind] = { "type" : "dummy", "next_state" : find_1st_connection_node_index_from_port_from_node_or_minus1(curr_conn, curr_node.name, 0) }
 				
+			BroManager.DialNodeType.NPC_ACTION:
+				save_data[curr_node_ind] = get_data_from_npc_action(curr_node, curr_conn)
+			
 	#var data = big_json_data.data #json_data.stringify(json_data)
 	
 	print(save_data)
@@ -201,6 +212,15 @@ func get_data_from_choise(choise : GraphNode, _connections : Array[Dictionary]) 
 		
 		res_json["choices"].append(choise.get_child(connection["from_port"] + 1).text)
 		res_json["next_states"].append(get_node(String(connection["to_node"])).state_index)
+	
+	return res_json
+
+func get_data_from_npc_action(node : GraphNode, _connections : Array[Dictionary]) -> Dictionary:
+	var res_json : Dictionary = node.get_data()
+	
+	res_json["type"] = "npc_action"
+
+	res_json["next_state"] = find_1st_connection_node_index_from_port_from_node_or_minus1(_connections, node.name, 0)
 	
 	return res_json
 

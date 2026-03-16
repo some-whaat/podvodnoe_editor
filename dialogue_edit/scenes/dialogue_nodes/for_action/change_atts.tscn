@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://0l13jpibk0vc"]
+
+[ext_resource type="Script" uid="uid://cghj5by53rjo2" path="res://change_atts.gd" id="1_or3fy"]
+
+[node name="change_atts" type="PanelContainer" unique_id=817169584]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_or3fy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=89439280]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer" unique_id=91575687]
+layout_mode = 2
+
+[node name="attr_name" type="OptionButton" parent="VBoxContainer/HSplitContainer" unique_id=1709808026]
+custom_minimum_size = Vector2(181, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HSplitContainer" unique_id=1525781566]
+layout_mode = 2
+text = "add"
+
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dx0b1gs8w3i6h"]
+
+[ext_resource type="Script" uid="uid://b54502rhlfov4" path="res://change_atts_arrs.gd" id="1_ec25b"]
+
+[node name="change_atts_arrs" type="PanelContainer" unique_id=555135205]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ec25b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=224163578]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer" unique_id=304996675]
+layout_mode = 2
+button_pressed = true
+text = "add"
+
+[node name="add_att_el_butt" type="Button" parent="VBoxContainer" unique_id=1177742262]
+layout_mode = 2
+text = "+"
+
+[connection signal="toggled" from="VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/add_att_el_butt" to="." method="_on_add_att_el_butt_pressed"]

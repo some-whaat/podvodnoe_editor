@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://pgs81ro05j0"]
+
+[ext_resource type="StyleBox" uid="uid://c5jdx1kljrbhi" path="res://styles/styleboxflat/border_style_box_flat.tres" id="1_0p73v"]
+[ext_resource type="Script" uid="uid://bfg3skrjqbdci" path="res://add_items.gd" id="1_xcism"]
+
+[node name="add_items" type="PanelContainer" unique_id=1331119675]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("1_0p73v")
+script = ExtResource("1_xcism")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2013780795]
+layout_mode = 2
+
+[node name="add_item_button" type="Button" parent="VBoxContainer" unique_id=209523814]
+layout_mode = 2
+text = "+ item to add"
+
+[connection signal="pressed" from="VBoxContainer/add_item_button" to="." method="_on_add_item_button_pressed"]

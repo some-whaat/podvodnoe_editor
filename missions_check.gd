@@ -2,6 +2,7 @@ extends Control
 
 const MISSION_CHECK = preload("res://dialogue_edit/scenes/dialogue_nodes/for_logic/mission_check.tscn")
 @onready var missions_check: VBoxContainer = $missions_check
+@onready var button: Button = $missions_check/Button
 
 var mission_checks := []
 
