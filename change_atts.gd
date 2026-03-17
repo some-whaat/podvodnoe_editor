@@ -14,7 +14,7 @@ const CHANGE_ATTS_ARRS = preload("res://dialogue_edit/scenes/dialogue_nodes/for_
 
 #@onready var attrs_names = BroManager.player_data["Player"]["attributes"].keys()
 func _ready() -> void:
-	for attr_name in BroManager.player_data["Player"]["attributes"]:
+	for attr_name in BroManager.ALL_DATA["layers"]["Player"]["Player"]["attributes"]:
 		attr_name_option.add_item(attr_name)
 
 func _on_button_pressed() -> void:
@@ -26,7 +26,7 @@ func _on_button_pressed() -> void:
 	#
 
 func spawn_attr(attr_to_add_text : String) -> void:
-	if typeof(BroManager.player_data["Player"]["attributes"][attr_to_add_text]) == TYPE_ARRAY:
+	if typeof(BroManager.BroManager.ALL_DATA["layers"]["Player"]["Player"]["attributes"][attr_to_add_text]) == TYPE_ARRAY:
 		var new_attr_arr = CHANGE_ATTS_ARRS.instantiate()
 		v_box_container.add_child(new_attr_arr)
 		new_attr_arr.init(attr_to_add_text)

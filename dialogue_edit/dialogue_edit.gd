@@ -32,7 +32,7 @@ func _ready() -> void:
 	disconnection_request.connect(_on_disconnection_request)
 	
 	'''!!!!!!!!!!!!ВРЕМЕННО, ПЕРЕНЕСТИ!!!!!!!!!!!!'''
-	BroManager.import_player_from_file("res://game/Player.json")
+	#BroManager.import_player_from_file("res://game/Player.json")
 	'''!!!!!!!!!!!!ВРЕМЕННО, ПЕРЕНЕСТИ!!!!!!!!!!!!'''
 #func get_connection_list_from_port(node : StringName, port : int):
 	#var connections = get_connection_list_from_node(node)

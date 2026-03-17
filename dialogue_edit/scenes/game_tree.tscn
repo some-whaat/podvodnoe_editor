@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b128uo1786qmp"]
+
+[ext_resource type="Script" uid="uid://0p8hyiaf1fla" path="res://game_tree.gd" id="1_4acvo"]
+
+[node name="main_editor" type="VBoxContainer" unique_id=1781233505]
+anchors_preset = -1
+anchor_right = 0.21100001
+anchor_bottom = 1.0
+offset_right = -80.07201
+offset_bottom = 57.0
+
+[node name="import_from_file" type="Button" parent="." unique_id=1294381688]
+layout_mode = 2
+text = "import from file"
+
+[node name="Control" type="Control" parent="." unique_id=327842881]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1955861354]
+custom_minimum_size = Vector2(0, 666)
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+
+[node name="game_tree" type="Tree" parent="ScrollContainer" unique_id=2096363473]
+custom_minimum_size = Vector2(161, 626)
+layout_mode = 2
+script = ExtResource("1_4acvo")

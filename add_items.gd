@@ -10,7 +10,7 @@ var items_to_add : Array = []
 func _on_add_item_button_pressed() -> void:
 	var new_item_id_option = OptionButton.new()
 	
-	for attr_name in BroManager.player_data["Player"]["items"]:
+	for attr_name in BroManager.ALL_DATA["layers"]["Player"]["Player"]["items"]:
 		new_item_id_option.add_item(attr_name)
 		
 	v_box_container.add_child(new_item_id_option)
