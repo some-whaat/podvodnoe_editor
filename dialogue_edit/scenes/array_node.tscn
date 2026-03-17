@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b2io71uubsv6n"]
+
+[ext_resource type="Script" uid="uid://ccuq4jc7j7mam" path="res://array_node.gd" id="1_wkeu3"]
+
+[node name="array_node" type="PanelContainer" unique_id=51508279]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wkeu3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1950198778]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=233741787]
+layout_mode = 2
+text = "+"
