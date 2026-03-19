@@ -59,3 +59,13 @@ func get_lines_text() -> Array[String]:
 		res.append(text.text)
 	
 	return res
+
+func set_data(data : Dictionary):
+	var data_copy = data.duplicate()
+	dialogue = data_copy["dialogue"].pop_front()
+	
+	for line in data_copy["dialogue"]:
+		add_new_text_edit(line)
+	
+	if data_copy.find_key("text_width"):
+		text_width.value = data_copy["text_width"]

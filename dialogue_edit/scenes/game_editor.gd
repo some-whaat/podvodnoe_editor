@@ -3,7 +3,7 @@ extends VBoxContainer
 var all_els : Dictionary
 
 func _ready():
-	import_from_file("res://game/World.json")
+	import_from_file("res://game/World_test.json")
 	
 	
 	#var child1 = create_item(root)
@@ -12,10 +12,26 @@ func _ready():
 	#var subchild1 = create_item(child1)
 	#subchild1.set_text(0, "Subchild1")
 
+func create_checkbutton_and_lable_return_checkbutton(parent : Control, lable_text : String, curr_value : bool) -> CheckButton:
+	var hbox_cont = HBoxContainer.new()
+	parent.add_child(hbox_cont)
+	hbox_cont.set_meta("title", lable_text)
+	
+	var lable = Label.new()
+	lable.text = lable_text
+	hbox_cont.add_child(lable)
+	
+	var checkbutton = CheckButton.new()
+	checkbutton.button_pressed = curr_value
+	hbox_cont.add_child(checkbutton)
+	checkbutton.set_meta("title", lable_text)
+	
+	return checkbutton
 
 func create_spinbox_and_lable_return_spinbox(parent : Control, lable_text : String, curr_value : int) -> SpinBox:
 	var hbox_cont = HBoxContainer.new()
 	parent.add_child(hbox_cont)
+	hbox_cont.set_meta("title", lable_text)
 	
 	var lable = Label.new()
 	lable.text = lable_text
@@ -24,16 +40,20 @@ func create_spinbox_and_lable_return_spinbox(parent : Control, lable_text : Stri
 	var spinbox = SpinBox.new()
 	spinbox.value = curr_value
 	hbox_cont.add_child(spinbox)
+	spinbox.set_meta("title", lable_text)
 	
 	return spinbox
 
 func create_foldble_return_vbox(parent : Control, fold_name : String) -> VBoxContainer:
 	var foldble = FoldableContainer.new()
 	foldble.title = fold_name
+	#foldble.folded = true
+	foldble.set_meta("title", fold_name)
 	parent.add_child(foldble)
 	
 	var vbox = VBoxContainer.new()
 	foldble.add_child(vbox)
+	vbox.set_meta("title", fold_name)
 	
 	return vbox
 
@@ -49,10 +69,12 @@ func import_from_file(filename : String) -> void:
 	
 	
 	var layers = create_foldble_return_vbox(self, "layers")
+	layers.set_meta("is_arr", false)
 	
 	for layer_name in BroManager.ALL_DATA["layers"]:
 
 		var new_layer = create_foldble_return_vbox(layers, layer_name)
+		new_layer.set_meta("is_arr", false)
 		
 		all_els[layer_name] = {}
 		
@@ -78,9 +100,16 @@ func import_from_file(filename : String) -> void:
 
 
 func create_input_control(parent : Control, type: Variant.Type, current_value, attr_name : String = "", arr_in_json = null) -> Control:
+	if attr_name == "states":
+		var butt = Button.new()
+		butt.text = "states" + arr_in_json
+		
+		return butt
+	
 	match type:
 		TYPE_DICTIONARY:
 			var arr = create_foldble_return_vbox(parent, attr_name)
+			arr.set_meta("is_arr", false)
 			var arr_links = []
 			for key_el in arr_in_json:
 				arr_links.append(create_input_control(arr, typeof(arr_in_json[key_el]), arr_in_json[key_el], key_el, arr_in_json[key_el]))
@@ -89,6 +118,7 @@ func create_input_control(parent : Control, type: Variant.Type, current_value, a
 		
 		TYPE_ARRAY:
 			var arr = create_foldble_return_vbox(parent, attr_name)
+			arr.set_meta("is_arr", true)
 			var arr_links = []
 			for el in arr_in_json:
 				if typeof(el) == TYPE_ARRAY or typeof(el) == TYPE_DICTIONARY:
@@ -114,11 +144,69 @@ func create_input_control(parent : Control, type: Variant.Type, current_value, a
 			
 			var line = LineEdit.new()
 			line.text = current_value
+			line.set_meta("title", attr_name)
 			parent.add_child(line)
 			return line
 			
 		TYPE_BOOL:
-			var check = CheckBox.new()
-			check.button_pressed = current_value
-			return check
+			return create_checkbutton_and_lable_return_checkbutton(parent, attr_name, current_value)
+			
 	return Control.new()  # fallback
+
+func get_data_from_node(node : Node):
+	if node.has_method("get_data"):
+		return node.get_data()
+	
+	match node.get_class():
+		
+		"HBoxContainer":
+			return get_data_from_node(node.get_child(1))
+		
+		"FoldableContainer":
+			return get_data_from_node(node.get_child(0))
+		
+		"VBoxContainer":
+			var res
+			
+			print(node.get_meta("is_arr", true))
+			if node.get_meta("is_arr", true):
+				res = []
+				for child in node.get_children():
+					res.append(get_data(child))
+				
+			else:
+				res = {}
+				for child in node.get_children():
+					res[child.get_meta("title", "")] = get_data(child)
+			return res
+		
+		"LineEdit":
+			return node.text
+		
+		"CheckBox":
+			return node.button_pressed
+		
+		"SpinBox":
+			return node.value
+	
+	print(node.get_class())
+
+
+func get_data(el):
+	if typeof(el) == TYPE_OBJECT:
+		return get_data_from_node(el)
+	
+	var parsed_data : Dictionary = {}
+	
+	for key_name in el:
+		parsed_data[key_name] = get_data(el[key_name])
+		
+	return parsed_data
+	
+
+
+func _on_save_butt_pressed() -> void:
+	var save_data = {}
+	save_data["layers"]= get_data(all_els)
+	
+	BroManager.save_to_json_file(save_data, "res://game/World_test.json")

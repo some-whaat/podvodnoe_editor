@@ -26,7 +26,7 @@ func _on_button_pressed() -> void:
 	#
 
 func spawn_attr(attr_to_add_text : String) -> void:
-	if typeof(BroManager.BroManager.ALL_DATA["layers"]["Player"]["Player"]["attributes"][attr_to_add_text]) == TYPE_ARRAY:
+	if typeof(BroManager.ALL_DATA["layers"]["Player"]["Player"]["attributes"][attr_to_add_text]) == TYPE_ARRAY:
 		var new_attr_arr = CHANGE_ATTS_ARRS.instantiate()
 		v_box_container.add_child(new_attr_arr)
 		new_attr_arr.init(attr_to_add_text)

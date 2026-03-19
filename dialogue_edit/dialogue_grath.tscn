@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bfrxa2l168b5r" path="res://dialogue_edit/scenes/dialogue_nodes/dummy.tscn" id="2_0hq8h"]
 [ext_resource type="Script" uid="uid://6cqdilljhms4" path="res://dialogue_edit/make_everything_button.gd" id="2_mw3pi"]
 [ext_resource type="Script" uid="uid://b7blnpotddnbu" path="res://dialogue_edit/extract_from_file_button.gd" id="3_144h7"]
+[ext_resource type="Script" uid="uid://vr4nkn6bd77l" path="res://dialogue_edit/run_the_game_button.gd" id="5_h2ywi"]
 
 [node name="dialogue_graph" type="Control" unique_id=442134503]
 layout_mode = 3
@@ -109,6 +110,11 @@ file_mode = 0
 root_subfolder = "res://data/dialogues/"
 filters = PackedStringArray("*.tres")
 
+[node name="run_the_game_button" type="Button" parent="HBoxContainer" unique_id=377967879]
+visible = false
+layout_mode = 2
+script = ExtResource("5_h2ywi")
+
 [connection signal="connection_request" from="GraphEdit" to="GraphEdit" method="_on_connection_request"]
 [connection signal="connection_to_empty" from="GraphEdit" to="GraphEdit" method="_on_connection_to_empty"]
 [connection signal="delete_nodes_request" from="GraphEdit" to="GraphEdit" method="_on_delete_nodes_request"]
@@ -122,3 +128,4 @@ filters = PackedStringArray("*.tres")
 [connection signal="file_selected" from="HBoxContainer/save_button/FileDialog" to="GraphEdit" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="HBoxContainer/extract_from_file_button" to="HBoxContainer/extract_from_file_button" method="_on_pressed"]
 [connection signal="file_selected" from="HBoxContainer/extract_from_file_button/FileExtract" to="GraphEdit" method="_on_file_extract_file_selected"]
+[connection signal="pressed" from="HBoxContainer/run_the_game_button" to="HBoxContainer/run_the_game_button" method="_on_pressed"]

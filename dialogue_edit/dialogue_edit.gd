@@ -19,11 +19,22 @@ const NPC_ACTION = preload("res://dialogue_edit/scenes/dialogue_nodes/for_action
 	BroManager.DialNodeType.NPC_ACTION : NPC_ACTION
 }
 
+@onready var string_to_grathnode_type : Dictionary[String, BroManager.DialNodeType] = {
+	"dialogue_line" : BroManager.DialNodeType.DIALOGUE,
+	"player_choice" : BroManager.DialNodeType.CHOICE,
+	"dummy" : BroManager.DialNodeType.DUMMY,
+	"logic" : BroManager.DialNodeType.LOGIC,
+	"npc_action" : BroManager.DialNodeType.NPC_ACTION
+}
+
 @onready var start: GraphNode = $START
 
-var indexes_given : int = 0
+var indexes_given : float = 0
+var indexes_given_dict : Dictionary
 
 func _ready() -> void:
+	BroManager.import_all_data_from_file("res://game/World.json")
+	
 	$"../HBoxContainer/butt_add_dialogue_line".pressed.connect(_on_butt_add_dialogue_line_pressed)
 	$"../HBoxContainer/butt_add_player_answer".pressed.connect(_on_butt_add_player_answer_pressed)
 	#$"../HBoxContainer/save_button/FileDialog".file_selected.connect(_on_file_dialog_file_selected)
@@ -58,13 +69,27 @@ func _on_disconnection_request(from_node: StringName, from_port: int, to_node: S
 	disconnect_node(from_node, from_port, to_node, to_port)
 
 
-func add_grath_node(pos : Vector2, dial_type : BroManager.DialNodeType) -> GraphNode:
+func add_grath_node(pos : Vector2, dial_type : BroManager.DialNodeType, index = null) -> GraphNode:
 	var new_node : GraphNode = grathnode_type_to_scene[dial_type].instantiate()
 	new_node.position_offset = pos
 	#new_dial_line.position_offset.y -= new_dial_line.size.y/2
-	new_node.state_index = indexes_given
-	indexes_given += 1
+	if not index:
+		index = indexes_given
+		while indexes_given_dict.has(index):
+			index = indexes_given
+			indexes_given += 1
+	
+	new_node.state_index = index
+	indexes_given_dict[index] = new_node
+	
 	add_child(new_node)
+	
+	return new_node
+
+func add_grath_node_from_data(pos : Vector2, data : Dictionary, index : float) -> GraphNode:
+	var new_node_type = string_to_grathnode_type[data["type"]]
+	var new_node = add_grath_node(pos, new_node_type)
+	new_node.set_data()
 	
 	return new_node
 
@@ -225,7 +250,10 @@ func get_data_from_npc_action(node : GraphNode, _connections : Array[Dictionary]
 	return res_json
 
 
-
+func import_from_states_data(states_data : Dictionary, defoult_state : float):
+	var pos = Vector2(88, 88)
+	for state_key in states_data:
+		add_grath_node_from_data(pos, states_data[state_key], float(state_key))
 
 
 #func extract_dial_passage(node_name : StringName, slot : int) -> DialoguePassage:
@@ -311,3 +339,8 @@ func clean_everything():
 
 func _on_save_button_pressed() -> void:
 	save_everything()
+
+
+
+#func extract_from_data(data : Dictionary):
+	

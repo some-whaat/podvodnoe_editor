@@ -50,3 +50,12 @@ func get_choises_text() -> Array[String]:
 
 func _on_delete_request() -> void:
 	queue_free()
+
+
+func set_data(data : Dictionary):
+	var data_copy = data.duplicate()
+	$ansv1.queue_free()
+	
+	for line in data_copy["choices"]:
+		add_new_text_edit(line)
+	

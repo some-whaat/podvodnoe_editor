@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bjd0mv6708aol"]
+
+[ext_resource type="Script" uid="uid://djxqu627hi6pn" path="res://editor_states_button.gd" id="1_gwj88"]
+
+[node name="editor_states_button" type="Button" unique_id=2111169457]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_gwj88")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
