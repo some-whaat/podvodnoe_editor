@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dcm7e7bcd4ajf"]
+
+[ext_resource type="Script" uid="uid://lpci7hkq8c1s" path="res://file_loader.gd" id="1_qdh63"]
+
+[node name="file_loader" type="HBoxContainer" unique_id=686650114]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qdh63")
+
+[node name="LoadFileButton" type="Button" parent="." unique_id=1755157909]
+layout_mode = 2
+text = "open file"
+
+[node name="FileDialog" type="FileDialog" parent="LoadFileButton" unique_id=1190318182]
+title = "Open a File"
+file_mode = 0
+root_subfolder = "res://game/"
+filters = PackedStringArray("*.txt", "*.json")
+
+[node name="current_filename" type="Label" parent="." unique_id=386335703]
+layout_mode = 2
+
+[connection signal="pressed" from="LoadFileButton" to="." method="_on_load_file_button_pressed"]
+[connection signal="file_selected" from="LoadFileButton/FileDialog" to="." method="_on_file_dialog_file_selected"]

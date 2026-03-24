@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://h10whlhkchjw"]
+
+[ext_resource type="Script" uid="uid://7rlcj4pmv37g" path="res://subclass.gd" id="1_fchku"]
+
+[node name="subclass" type="FoldableContainer" unique_id=1319071899]
+offset_right = 24.0
+offset_bottom = 32.0
+script = ExtResource("1_fchku")
+
+[node name="subclass_vbox" type="VBoxContainer" parent="." unique_id=994676187]
+layout_mode = 2

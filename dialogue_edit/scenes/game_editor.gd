@@ -1,9 +1,10 @@
 extends VBoxContainer
 
 var all_els : Dictionary
+@onready var world_preview: RichTextLabel = $"../world_preview"
 
 func _ready():
-	import_from_file("res://game/World_test.json")
+	import_from_file("res://game/World.json")
 	
 	
 	#var child1 = create_item(root)
@@ -100,11 +101,15 @@ func import_from_file(filename : String) -> void:
 
 
 func create_input_control(parent : Control, type: Variant.Type, current_value, attr_name : String = "", arr_in_json = null) -> Control:
-	if attr_name == "states":
-		var butt = Button.new()
-		butt.text = "states" + arr_in_json
-		
-		return butt
+	#if attr_name == "states":
+		#var butt = Button.new()
+		#butt.text = "states" + arr_in_json
+		#
+		#return butt
+	#if attr_name == "sprite_filepame":
+		#
+		#world_preview.
+		#
 	
 	match type:
 		TYPE_DICTIONARY:

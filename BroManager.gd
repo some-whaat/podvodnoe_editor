@@ -1,10 +1,28 @@
 extends Node
 
 enum DialNodeType { DIALOGUE, CHOICE, DUMMY, LOGIC, NPC_ACTION }
+enum ObjClass {Position, RendrbleObject, Picture, AnimatbleObj, MovingObj, NPC}
 
 var ALL_DATA : Dictionary
 #var player_data : Dictionary
 
+var classnamestring_to_enum = {
+	"Position" : ObjClass.Position,
+	"RendrbleObject" : ObjClass.RendrbleObject,
+	"Picture" : ObjClass.Picture,
+	"AnimatbleObj" : ObjClass.AnimatbleObj,
+	"MovingObj" : ObjClass.MovingObj,
+	"NPC" : ObjClass.NPC
+}
+
+var class_order := [
+	"Position",
+	"RendrbleObject",
+	"Picture",
+	"AnimatbleObj",
+	"MovingObj",
+	"NPC"
+]
 
 func load_json_file(file_path: String):
 	var file = FileAccess.open(file_path, FileAccess.READ)

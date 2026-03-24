@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bxw6d8krxidxk"]
+
+[ext_resource type="Script" uid="uid://dpmbr74uw34g1" path="res://layer.gd" id="1_har5c"]
+
+[node name="layer" type="FoldableContainer" unique_id=177714989]
+offset_right = 24.0
+offset_bottom = 32.0
+script = ExtResource("1_har5c")
+
+[node name="layer_vbox" type="VBoxContainer" parent="." unique_id=913397779]
+layout_mode = 2

@@ -25,4 +25,7 @@ text = "import from file"
 layout_mode = 2
 text = "save"
 
+[node name="world_preview" type="RichTextLabel" parent="." unique_id=1360645480]
+layout_mode = 2
+
 [connection signal="pressed" from="main_editor/HSplitContainer/save_butt" to="main_editor" method="_on_save_butt_pressed"]
