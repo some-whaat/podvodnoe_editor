@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://m6jg315r7cj6"]
+
+[ext_resource type="Script" uid="uid://y3l3odxq3k54" path="res://states.gd" id="1_ttg4q"]
+[ext_resource type="PackedScene" uid="uid://dcm7e7bcd4ajf" path="res://main_editor/layer/file_loader.tscn" id="2_xhk3g"]
+
+[node name="npc_states" type="Control" unique_id=310430603]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ttg4q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=96167298]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="file_loader" parent="VBoxContainer" unique_id=686650114 instance=ExtResource("2_xhk3g")]
+visible = false
+layout_mode = 2
+
+[node name="edit_states_button" type="Button" parent="VBoxContainer" unique_id=997789018]
+layout_mode = 2
+text = "edit npc states"
+
+[connection signal="pressed" from="VBoxContainer/edit_states_button" to="." method="_on_edit_states_button_pressed"]

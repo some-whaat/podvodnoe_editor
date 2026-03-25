@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c3hi3j27bkw6b"]
 
+[ext_resource type="Script" uid="uid://8ssyh1taemlw" path="res://dialogue_edit/dialogue_grath_parent.gd" id="1_5qnv4"]
 [ext_resource type="Script" uid="uid://bl1ejgtuf5h6g" path="res://dialogue_edit/dialogue_edit.gd" id="1_d8n4q"]
 [ext_resource type="PackedScene" uid="uid://bfrxa2l168b5r" path="res://dialogue_edit/scenes/dialogue_nodes/dummy.tscn" id="2_0hq8h"]
 [ext_resource type="Script" uid="uid://6cqdilljhms4" path="res://dialogue_edit/make_everything_button.gd" id="2_mw3pi"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5qnv4")
 
 [node name="GraphEdit" type="GraphEdit" parent="." unique_id=1409638374]
 layout_mode = 1

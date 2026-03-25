@@ -6,6 +6,7 @@ var export_data : Dictionary
 
 @onready var subclass_vbox: VBoxContainer = $subclass_vbox
 const FILE_LOADER = preload("res://main_editor/layer/file_loader.tscn")
+const NPC_STATES = preload("res://main_editor/layer/npc_states.tscn")
 
 func initiate(class_type_name : String, _data : Dictionary):
 	data = _data
@@ -22,9 +23,9 @@ func initiate(class_type_name : String, _data : Dictionary):
 			
 		"RendrbleObject":
 			# "color": [ 0, 0, 1 ]
-			var r = create_spinbox_and_lable_return_spinbox(subclass_vbox, "r", data["r"])
-			var g = create_spinbox_and_lable_return_spinbox(subclass_vbox, "g", data["g"])
-			var b = create_spinbox_and_lable_return_spinbox(subclass_vbox, "b", data["b"])
+			var r = create_spinbox_and_lable_return_spinbox(subclass_vbox, "r", data["color"][0])
+			var g = create_spinbox_and_lable_return_spinbox(subclass_vbox, "g", data["color"][1])
+			var b = create_spinbox_and_lable_return_spinbox(subclass_vbox, "b", data["color"][2])
 			
 			export_data["color"] = []
 			export_data["color"].append(r)
@@ -66,9 +67,11 @@ func initiate(class_type_name : String, _data : Dictionary):
 			export_data["does_has_dialogue_on"] = does_has_dialogue_on
 			
 			# "defult_state": 0,
-
 			#"states": {}
-			
+			var states = NPC_STATES.instantiate()
+			subclass_vbox.add_child(states)
+			states.defult_state = data["defult_state"]
+			states.states_data = data["states"]
 		
 		
 

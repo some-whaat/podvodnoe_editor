@@ -7,7 +7,7 @@ var class_type : String
 
 var subclasses : Dictionary = {} # class_type_name : obg
 
-func create_object(_class_type : String, obj_name : String, data : Dictionary):
+func initiate(_class_type : String, obj_name : String, data : Dictionary):
 	title = obj_name
 	class_type = _class_type
 	
@@ -21,6 +21,7 @@ func create_object(_class_type : String, obj_name : String, data : Dictionary):
 
 func create_subclass(class_type_name : String, data : Dictionary):
 	var subclass = SUBCLASS.instantiate()
-	subclass.initiate(class_type_name, data[class_type_name])
-	
 	object_holder.add_child(subclass)
+	subclass.initiate(class_type_name, data)
+	
+	

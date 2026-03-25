@@ -32,13 +32,14 @@ func get_data():
 	#add_child(new_node)
 	#add_items_list.append(new_node)
 	#
-#
-#func set_data(data : Dictionary):
-	#var data_copy = data.duplicate()
-	#dialogue = data_copy["dialogue"].pop_front()
-	#
-	#for line in data_copy["dialogue"]:
-		#add_new_text_edit(line)
-	#
-	#if data_copy.find_key("text_width"):
-		#text_width.value = data_copy["text_width"]
+
+func set_data(data : Dictionary):
+	
+	if data.has("add_item(s)"):
+		add_items_k.import_data(data["add_item(s)"])
+	
+	if data.has("take_items(s)"):
+		take_items_k.import_data(data["take_items(s)"])
+	
+	if data.has("change_atts"):
+		change_atts_k.import_data(data["change_atts"])

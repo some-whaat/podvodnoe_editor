@@ -23,3 +23,9 @@ func _on_add_mission_check_pressed() -> void:
 	add_child(new_mission_check)
 	
 	added_mission_check.append(new_mission_check)
+
+func get_data():
+	pass
+
+func set_data(data : Dictionary):
+	pass

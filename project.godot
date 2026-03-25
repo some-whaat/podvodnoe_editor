@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="podvodnoe_engine"
-run/main_scene="uid://c3hi3j27bkw6b"
+run/main_scene="uid://b128uo1786qmp"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

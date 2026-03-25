@@ -918,6 +918,7 @@
 				}
 			  }
 			},
+			
 			"fish_left": {
 			  "RendrbleObject": {
 				"color": [ 1, 0, 1 ],

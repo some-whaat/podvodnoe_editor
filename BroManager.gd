@@ -24,6 +24,10 @@ var class_order := [
 	"NPC"
 ]
 
+func  _init() -> void:
+	#print("hi")
+	import_all_data_from_file("res://game/World.json")
+
 func load_json_file(file_path: String):
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	if file == null:

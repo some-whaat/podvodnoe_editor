@@ -15,3 +15,6 @@ func _on_file_dialog_file_selected(path: String) -> void:
 func set_filepath(filepath : String):
 	curr_file = filepath
 	current_filename.text = filepath
+
+#func get_path() -> String:
+	#return curr_file

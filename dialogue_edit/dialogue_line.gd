@@ -3,7 +3,7 @@ extends GraphNode
 var state_index
 const type : BroManager.DialNodeType = BroManager.DialNodeType.DIALOGUE
 
-@onready var dialogue: TextEdit = $dialogue
+@onready var dialogue: TextEdit = $dial1
 @onready var text_width: SpinBox = $text_width
 
 var dial_count : int = 1
@@ -61,11 +61,13 @@ func get_lines_text() -> Array[String]:
 	return res
 
 func set_data(data : Dictionary):
-	var data_copy = data.duplicate()
-	dialogue = data_copy["dialogue"].pop_front()
 	
-	for line in data_copy["dialogue"]:
-		add_new_text_edit(line)
-	
-	if data_copy.find_key("text_width"):
-		text_width.value = data_copy["text_width"]
+	if len(data["dialogue"]) > 0:
+		var data_copy = data.duplicate()
+		dialogue.text = data_copy["dialogue"].pop_front()
+		
+		for line in data_copy["dialogue"]:
+			add_new_text_edit(line)
+		
+		if data_copy.find_key("text_width"):
+			text_width.value = data_copy["text_width"]

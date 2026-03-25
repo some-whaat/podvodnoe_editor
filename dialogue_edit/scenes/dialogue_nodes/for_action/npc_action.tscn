@@ -31,6 +31,9 @@ visible = false
 layout_mode = 2
 text = "+ add item(s)"
 
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HSplitContainer" unique_id=77564105]
+layout_mode = 2
+
 [node name="add_items" parent="VBoxContainer" unique_id=1331119675 instance=ExtResource("2_v4wl5")]
 layout_mode = 2
 

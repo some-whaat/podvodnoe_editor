@@ -25,11 +25,11 @@ func _on_button_pressed() -> void:
 		#text_edit.text = "Player does not have this attribute"
 	#
 
-func spawn_attr(attr_to_add_text : String) -> void:
+func spawn_attr(attr_to_add_text : String, data = null) -> void:
 	if typeof(BroManager.ALL_DATA["layers"]["Player"]["Player"]["attributes"][attr_to_add_text]) == TYPE_ARRAY:
 		var new_attr_arr = CHANGE_ATTS_ARRS.instantiate()
 		v_box_container.add_child(new_attr_arr)
-		new_attr_arr.init(attr_to_add_text)
+		new_attr_arr.init(attr_to_add_text, data)
 		
 		if not added_atts.find_key(attr_to_add_text):
 			added_atts[attr_to_add_text] = []
@@ -62,3 +62,7 @@ func get_data():
 		res[att_name] = added_atts[att_name].get_data()
 	
 	return res
+
+func import_data(data : Dictionary):
+	for attr_key_name in data:
+		spawn_attr(attr_key_name, data[attr_key_name])

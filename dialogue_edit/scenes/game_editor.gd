@@ -1,7 +1,9 @@
 extends VBoxContainer
 
 var all_els : Dictionary
-@onready var world_preview: RichTextLabel = $"../world_preview"
+#@onready var world_preview: RichTextLabel = $"../world_preview"
+
+const LAYER = preload("res://main_editor/layer/layer.tscn")
 
 func _ready():
 	import_from_file("res://game/World.json")
@@ -59,6 +61,24 @@ func create_foldble_return_vbox(parent : Control, fold_name : String) -> VBoxCon
 	return vbox
 
 func import_from_file(filename : String) -> void:
+	if BroManager.ALL_DATA.has("camera_speed"):
+		all_els["camera_speed"] = create_spinbox_and_lable_return_spinbox(self, "camera speed", BroManager.ALL_DATA["camera_speed"])
+	
+	#if BroManager.ALL_DATA.has("border_poses"):
+		#all_els["border_poses"] = create_spinbox_and_lable_return_spinbox(self, "border poses", BroManager.ALL_DATA["border_poses"])
+	#
+	
+	var layers = create_foldble_return_vbox(self, "layers")
+	layers.set_meta("is_arr", false)
+	
+	for layer_name in BroManager.ALL_DATA["layers"]:
+		var new_layer = LAYER.instantiate()
+		layers.add_child(new_layer)
+		new_layer.initiate(BroManager.ALL_DATA["layers"][layer_name], layer_name)
+		
+		
+
+func __import_from_file(filename : String) -> void:
 	BroManager.import_all_data_from_file(filename)
 	
 	

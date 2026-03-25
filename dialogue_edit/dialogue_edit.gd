@@ -20,7 +20,7 @@ const NPC_ACTION = preload("res://dialogue_edit/scenes/dialogue_nodes/for_action
 }
 
 @onready var string_to_grathnode_type : Dictionary[String, BroManager.DialNodeType] = {
-	"dialogue_line" : BroManager.DialNodeType.DIALOGUE,
+	"dialogue" : BroManager.DialNodeType.DIALOGUE,
 	"player_choice" : BroManager.DialNodeType.CHOICE,
 	"dummy" : BroManager.DialNodeType.DUMMY,
 	"logic" : BroManager.DialNodeType.LOGIC,
@@ -33,7 +33,7 @@ var indexes_given : float = 0
 var indexes_given_dict : Dictionary
 
 func _ready() -> void:
-	BroManager.import_all_data_from_file("res://game/World.json")
+	#BroManager.import_all_data_from_file("res://game/World.json")
 	
 	$"../HBoxContainer/butt_add_dialogue_line".pressed.connect(_on_butt_add_dialogue_line_pressed)
 	$"../HBoxContainer/butt_add_player_answer".pressed.connect(_on_butt_add_player_answer_pressed)
@@ -88,7 +88,7 @@ func add_grath_node(pos : Vector2, dial_type : BroManager.DialNodeType, index = 
 
 func add_grath_node_from_data(pos : Vector2, data : Dictionary, index : float) -> GraphNode:
 	var new_node_type = string_to_grathnode_type[data["type"]]
-	var new_node = add_grath_node(pos, new_node_type)
+	var new_node = add_grath_node(pos, new_node_type, index)
 	new_node.set_data(data)
 	
 	return new_node
@@ -253,8 +253,37 @@ func get_data_from_npc_action(node : GraphNode, _connections : Array[Dictionary]
 func import_from_states_data(states_data : Dictionary, defoult_state : float):
 	var pos = Vector2(88, 88)
 	for state_key in states_data:
-		add_grath_node_from_data(pos, states_data[state_key], float(state_key))
-
+		var new_grathnode = add_grath_node_from_data(pos, states_data[state_key], float(state_key))
+		
+		new_grathnode.set_data(states_data[state_key])
+		
+		indexes_given_dict[state_key] = new_grathnode
+		
+		pos += Vector2(464, 0)
+	
+	
+	
+	var joined_nodes : int = 0
+	var queue = [defoult_state]
+	connect_node(&"START", 0, indexes_given_dict[defoult_state].name, 0)
+	while joined_nodes < len(indexes_given_dict) and len(queue) > 0:
+		var curr_index = str(int(queue.pop_front()))
+		var curr_node = indexes_given_dict[curr_index]
+		var curr_node_name = curr_node.name
+		
+		if curr_node.type == BroManager.DialNodeType.CHOICE:
+			var output_indexes = states_data[curr_index]["next_states"]
+			for output_index_ind in range(len(output_indexes)):
+				connect_node(curr_node_name, output_index_ind, indexes_given_dict[output_indexes[output_index_ind]].name, 0)
+				queue.append(output_indexes[output_index_ind])
+		elif curr_node.type == BroManager.DialNodeType.LOGIC:
+			pass
+		else:
+			var output_index = states_data[curr_index]["next_state"]
+			connect_node(curr_node_name, 0, indexes_given_dict[output_index].name, 0)
+			queue.append(output_index)
+		
+		joined_nodes += 1
 
 #func extract_dial_passage(node_name : StringName, slot : int) -> DialoguePassage:
 	#var dial_pass : DialoguePassage = DialoguePassage.new()
