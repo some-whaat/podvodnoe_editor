@@ -58,7 +58,17 @@ func save_to_json_file(data, file_path: String) -> bool:
 	else:
 		print("Failed to open file for writing: ", file_path)
 		return false
-		
+
+func load_text_file(file_path: String) -> String:
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if file:
+		var content = file.get_as_text()
+		file.close()
+		return content
+	else:
+		print("Error opening file: ", file_path)
+		return ""
+
 #func import_player_from_file(file_path: String):
 	#player_data = load_json_file(file_path)
 

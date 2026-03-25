@@ -1,11 +1,16 @@
 extends Container
 
 @onready var tab_container: TabContainer = $TabContainer
+@onready var world_preview: RichTextLabel
 
 signal add_editor_element(editor_element)
+const WORLD_PREVIEW = preload("res://dialogue_edit/scenes/world_preview.tscn")
 
 
 func _ready() -> void:
+	#world_preview = WORLD_PREVIEW.instantiate()
+	#tab_container.add_child(world_preview)
+	
 	add_editor_element.connect(_on_add_editor_element)
 	
 
@@ -20,3 +25,8 @@ func switch_to_tab_by_title(title: String):
 			return
 	
 	print("Tab not found: ", title)
+
+
+
+func update_visuals(obj_name : String, image_arr : Array, pos : Vector2i, color : Array):
+	$TabContainer/world_preview.update_visuals(obj_name, image_arr, pos, color)

@@ -5,9 +5,11 @@ var all_els : Dictionary
 
 const LAYER = preload("res://main_editor/layer/layer.tscn")
 
+signal finished_init
+
 func _ready():
 	import_from_file("res://game/World.json")
-	
+	finished_init.emit()
 	
 	#var child1 = create_item(root)
 	#child1.set_text(0, "child1")

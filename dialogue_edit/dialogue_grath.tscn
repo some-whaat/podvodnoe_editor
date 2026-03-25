@@ -54,6 +54,7 @@ slot/0/draw_stylebox = true
 layout_mode = 2
 
 [node name="dummy" parent="GraphEdit" unique_id=2019257339 instance=ExtResource("2_0hq8h")]
+visible = false
 layout_mode = 0
 offset_left = 1030.0
 offset_top = 284.0

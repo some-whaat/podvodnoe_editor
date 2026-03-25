@@ -8,6 +8,8 @@ var export_data : Dictionary
 const FILE_LOADER = preload("res://main_editor/layer/file_loader.tscn")
 const NPC_STATES = preload("res://main_editor/layer/npc_states.tscn")
 
+
+
 func initiate(class_type_name : String, _data : Dictionary, parent_name : String):
 	data = _data
 	class_type = class_type_name
@@ -46,6 +48,7 @@ func initiate(class_type_name : String, _data : Dictionary, parent_name : String
 			subclass_vbox.add_child(sprite_filepame)
 			sprite_filepame.set_filepath(data["sprite_filepame"])
 			export_data["sprite_filepame"] = sprite_filepame
+			
 			
 		"AnimatbleObj":
 			# "animated_sprite_filepame": "big_fish.txt"

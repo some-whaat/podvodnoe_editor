@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dgim1c8m7ktiy"]
+
+[ext_resource type="Script" uid="uid://c4gcal05as1vl" path="res://dialogue_edit/scenes/world_preview.gd" id="1_rvyru"]
+
+[node name="world_preview" type="RichTextLabel" unique_id=467109489]
+script = ExtResource("1_rvyru")
+metadata/_tab_index = 0
+
+[connection signal="resized" from="." to="." method="_on_resized"]

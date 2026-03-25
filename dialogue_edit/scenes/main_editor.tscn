@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blqo4anr34lod" path="res://dialogue_edit/scenes/main_main_editor.gd" id="1_1xwyo"]
 [ext_resource type="Script" uid="uid://bmcr2o3jco6f1" path="res://dialogue_edit/scenes/game_editor.gd" id="2_358bb"]
+[ext_resource type="PackedScene" uid="uid://dgim1c8m7ktiy" path="res://dialogue_edit/scenes/world_preview.tscn" id="3_358bb"]
 
 [node name="main_main_editor" type="HSplitContainer" unique_id=1342683041]
 anchors_preset = 15
@@ -12,8 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-split_offsets = PackedInt32Array(-897)
-split_offset = -897
+split_offsets = PackedInt32Array(-797)
+split_offset = -797
 script = ExtResource("1_1xwyo")
 
 [node name="main_editor" type="ScrollContainer" parent="." unique_id=2069315660]
@@ -45,8 +46,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 0
 
-[node name="world_preview" type="RichTextLabel" parent="TabContainer" unique_id=1360645480]
+[node name="world_preview" parent="TabContainer" unique_id=467109489 instance=ExtResource("3_358bb")]
 layout_mode = 2
-metadata/_tab_index = 0
+fit_content = true
 
 [connection signal="pressed" from="main_editor/main_editor/HSplitContainer/save_butt" to="main_editor/main_editor" method="_on_save_butt_pressed"]
