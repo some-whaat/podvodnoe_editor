@@ -17,7 +17,8 @@ func initiate(layer_data : Dictionary, layer_name : String):
 			if key_class_name == "layer_ind":
 				layer_ind = layer_data["layer_ind"]
 				continue
-			
+			if key_class_name == "do_needs_player":
+				continue
 			#var class_type : BroManager.ObjClass = BroManager.classnamestring_to_enum[key_class_name]
 			
 			layer_class_arrs[key_class_name] = layer_data[key_class_name]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b36ivspk1x2uo"]
+
+[ext_resource type="Script" uid="uid://b45awpjsv8rnu" path="res://object.gd" id="1_wq2mg"]
+
+[node name="object" type="FoldableContainer" unique_id=57558080]
+offset_right = 24.0
+offset_bottom = 32.0
+script = ExtResource("1_wq2mg")
+
+[node name="object_holder" type="VBoxContainer" parent="." unique_id=1723352864]
+layout_mode = 2

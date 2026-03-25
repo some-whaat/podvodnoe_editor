@@ -46,6 +46,7 @@ func spawn_attr(attr_to_add_text : String, data = null) -> void:
 		
 		var spinbox = SPIN_BOX_WITH_GET_DATA.instantiate()
 		n_hsc.add_child(spinbox)
+		spinbox.value = data
 		
 		if not added_atts.find_key(attr_to_add_text):
 			added_atts[attr_to_add_text] = []

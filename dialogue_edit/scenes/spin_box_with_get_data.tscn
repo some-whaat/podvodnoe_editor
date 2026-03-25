@@ -5,4 +5,6 @@
 [node name="SpinBoxWithGetData" type="SpinBox" unique_id=30295857]
 offset_right = 86.5
 offset_bottom = 31.0
+min_value = -999.0
+max_value = 999.0
 script = ExtResource("1_mli2j")

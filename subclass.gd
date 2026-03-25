@@ -8,7 +8,7 @@ var export_data : Dictionary
 const FILE_LOADER = preload("res://main_editor/layer/file_loader.tscn")
 const NPC_STATES = preload("res://main_editor/layer/npc_states.tscn")
 
-func initiate(class_type_name : String, _data : Dictionary):
+func initiate(class_type_name : String, _data : Dictionary, parent_name : String):
 	data = _data
 	class_type = class_type_name
 	
@@ -63,13 +63,15 @@ func initiate(class_type_name : String, _data : Dictionary):
 			
 		"NPC":
 			# "does_has_dialogue_on": true
-			var does_has_dialogue_on = create_checkbutton_and_lable_return_checkbutton(subclass_vbox, "does_has_dialogue_on", data["does_has_dialogue_on"])
-			export_data["does_has_dialogue_on"] = does_has_dialogue_on
+			if data.has("does_has_dialogue_on"):
+				var does_has_dialogue_on = create_checkbutton_and_lable_return_checkbutton(subclass_vbox, "does_has_dialogue_on", data["does_has_dialogue_on"])
+				export_data["does_has_dialogue_on"] = does_has_dialogue_on
 			
 			# "defult_state": 0,
 			#"states": {}
 			var states = NPC_STATES.instantiate()
 			subclass_vbox.add_child(states)
+			states.npc_name = parent_name
 			states.defult_state = data["defult_state"]
 			states.states_data = data["states"]
 		

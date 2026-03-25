@@ -89,7 +89,7 @@ func add_grath_node(pos : Vector2, dial_type : BroManager.DialNodeType, index = 
 func add_grath_node_from_data(pos : Vector2, data : Dictionary, index : float) -> GraphNode:
 	var new_node_type = string_to_grathnode_type[data["type"]]
 	var new_node = add_grath_node(pos, new_node_type, index)
-	new_node.set_data(data)
+	#new_node.set_data(data)
 	
 	return new_node
 

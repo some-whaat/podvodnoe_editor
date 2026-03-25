@@ -4,11 +4,13 @@ extends FoldableContainer
 const SUBCLASS = preload("res://main_editor/layer/subclass.tscn")
 
 var class_type : String
+var object_name : String
 
 var subclasses : Dictionary = {} # class_type_name : obg
 
 func initiate(_class_type : String, obj_name : String, data : Dictionary):
 	title = obj_name
+	object_name = obj_name
 	class_type = _class_type
 	
 	for class_type_name in data:#BroManager.class_order:
@@ -22,6 +24,6 @@ func initiate(_class_type : String, obj_name : String, data : Dictionary):
 func create_subclass(class_type_name : String, data : Dictionary):
 	var subclass = SUBCLASS.instantiate()
 	object_holder.add_child(subclass)
-	subclass.initiate(class_type_name, data)
+	subclass.initiate(class_type_name, data, object_name)
 	
 	
