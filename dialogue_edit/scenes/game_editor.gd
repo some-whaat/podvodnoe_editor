@@ -63,6 +63,7 @@ func create_foldble_return_vbox(parent : Control, fold_name : String) -> VBoxCon
 	return vbox
 
 func import_from_file(filename : String) -> void:
+	BroManager.import_all_data_from_file(filename)
 	if BroManager.ALL_DATA.has("camera_speed"):
 		all_els["camera_speed"] = create_spinbox_and_lable_return_spinbox(self, "camera speed", BroManager.ALL_DATA["camera_speed"])
 	

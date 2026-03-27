@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://blqo4anr34lod" path="res://dialogue_edit/scenes/main_main_editor.gd" id="1_1xwyo"]
 [ext_resource type="Script" uid="uid://bmcr2o3jco6f1" path="res://dialogue_edit/scenes/game_editor.gd" id="2_358bb"]
 [ext_resource type="PackedScene" uid="uid://dgim1c8m7ktiy" path="res://dialogue_edit/scenes/world_preview.tscn" id="3_358bb"]
+[ext_resource type="FontFile" uid="uid://rqdjh7t4rmux" path="res://font/consolas.ttf" id="4_wx0pn"]
 
 [node name="main_main_editor" type="HSplitContainer" unique_id=1342683041]
 anchors_preset = 15
@@ -48,6 +49,7 @@ current_tab = 0
 
 [node name="world_preview" parent="TabContainer" unique_id=467109489 instance=ExtResource("3_358bb")]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_wx0pn")
 fit_content = true
 
 [connection signal="pressed" from="main_editor/main_editor/HSplitContainer/save_butt" to="main_editor/main_editor" method="_on_save_butt_pressed"]

@@ -55,6 +55,9 @@ func update_visuals():
 		else:
 			export_image_arr[-1].append(image_char)
 	
+	print("from ", type_of_rendering, " ", object_name, " update_visuals()")
+	#print(export_image_str)
+	
 	var pos = Vector2i(subclasses["Position"].export_data["x"].value, subclasses["Position"].export_data["y"].value)
 	var color = []
 	for spinbox in subclasses["RendrbleObject"].export_data["color"]:
