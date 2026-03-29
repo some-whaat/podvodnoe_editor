@@ -28,5 +28,5 @@ func switch_to_tab_by_title(title: String):
 
 
 
-func update_visuals(obj_name : String, image_arr : Array, pos : Vector2i, color : Array):
-	$TabContainer/world_preview.update_visuals(obj_name, image_arr, pos, color)
+func update_visuals(obj_name : String, image_arr : Array, pos : Vector2i, color : Array, add_paralax):
+	$TabContainer/world_preview.update_visuals(obj_name, image_arr, pos, color, add_paralax)

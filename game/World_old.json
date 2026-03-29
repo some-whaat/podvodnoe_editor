@@ -6,8 +6,6 @@
 	[ -115, 100 ]
   ],
 
-  "collision_add_val_to_NPC": 6,
-
   "layers": {
 
 	"bacground": {
@@ -15,29 +13,11 @@
 
 	  "Picture": {
 
-		"frederic": {
-
-		  "Position": {
-			"x": 0,
-			"y": 0
-		  },
-
-		  "RendrbleObject": {
-			"color": [ 1, 0, 1 ],
-			"is_render": true,
-			"add_paralax": 0
-		  },
-
-		  "Picture": {
-			"sprite_filepame": "scull.txt"
-		  }
-		},
-
 		"beach1": {
 
 		  "Position": {
 			"x": 0,
-			"y": 50
+			"y": 0
 		  },
 
 		  "RendrbleObject": {
@@ -51,26 +31,6 @@
 			"sprite_filepame": "beach_s.txt"
 		  }
 		},
-
-		"dino": {
-
-		  "Position": {
-			"x": -22,
-			"y": -20
-		  },
-
-		  "RendrbleObject": {
-
-			"color": [ 0, 1, 1 ],
-			"is_render": true,
-			"add_paralax": 0.8
-		  },
-
-		  "Picture": {
-			"sprite_filepame": "dino.txt"
-		  }
-		},
-
 		"bottom": {
 
 		  "Position": {
@@ -128,13 +88,12 @@
 	  }
 	},
 
-	"NPCs": {
-	  "layer_ind": 4,
+	"NPCs" : {
+	  "do_needs_player":  true,
 
 	  "NPC": {
 
 		"frederic": {
-
 
 		  "Position": {
 			"x": 10,
@@ -172,16 +131,26 @@
 
 		  "NPC": {
 
-			"does_has_dialogue_on": true,
+			"default_text_width": 30,
+			"player_answers_text_width": 30,
+
+			"dist_to_interact": 15,
+
+			"always_dialogue_on": false,
 
 			"defult_state": 0,
 
 			"states": {
 
+			  "-1": {
+				"type": "dummy",
+				"next_state": 7
+			  },
 
 			  "0": {
 				"type": "dialogue",
-				"dialogue": ["You still with me, or...? You've daydreamed again and lost the thread of the conversation, haven't you?"],
+				"dialogue": [ "You still with me, or...? You've daydreamed again and lost the thread of the conversation, haven't you?" ],
+				"text_width": 111,
 				"next_state": 1
 			  },
 
@@ -193,7 +162,7 @@
 
 			  "2": {
 				"type": "dialogue",
-				"dialogue": ["You wanted to find Gary's shop. Well, Gary's packed up here - his little business is over the hill now."],
+				"dialogue": [ "You wanted to find Gary's shop. Well, Gary's packed up here - his little business is over the hill now." ],
 				"next_state": 3
 			  },
 
@@ -205,20 +174,26 @@
 
 			  "4": {
 				"type": "dialogue",
-				"dialogue": ["Sea knows why - maybe the market got too competitive, or maybe the waves kept washing away his customers.", "Either way, he decided to move to a quieter spot. Not that Gary went into details about his reasons for relocating beyond the hill, so the truth remains a mystery.", "Lots has changed since you sailed away."],
+
+				"dialogue": [
+				  "Sea knows why - maybe the market got too competitive, or maybe the waves kept washing away his customers.",
+				  "Either way, he decided to move to a quieter spot. Not that Gary went into details about his reasons for relocating beyond the hill, so the truth remains a mystery.",
+	              "Lots has changed since you sailed away."
+				],
+
 				"next_state": 5
 			  },
 
 			  "5": {
 				"type": "dialogue",
-				"dialogue": ["How to get there? The Sunduchok is your guy! Still camped out on that godforsaken island, playing all-knowing oracle of the tides."],
+				"dialogue": [ "How to get there? The Sunduchok is your guy! Still camped out on that godforsaken island, playing all-knowing oracle of the tides." ],
 				"next_state": 6
 			  },
 
 			  "6": {
 				"type": "dialogue",
-				"dialogue": ["My wisdom ends here. The Sunduchok holds the rest."],
-				"next_state": 7
+				"dialogue": [ "My wisdom ends here. The Sunduchok holds the rest." ],
+				"next_state": -1
 			  },
 
 			  "7": {
@@ -228,14 +203,14 @@
 				  "needed_item_state": true
 
 				},
-				
+
 				"true_state": 8,
 				"false_state": 9
 			  },
 
 			  "8": {
 				"type": "dialogue",
-				"dialogue": ["Get to the tavern. Now!"],
+				"dialogue": [ "Get to the tavern. Now!" ],
 				"next_state": 6
 			  },
 
@@ -255,7 +230,7 @@
 
 			  "10": {
 				"type": "dialogue",
-				"dialogue": ["Behold! Your heart desires... a stone or something like this. Truly, my insight knows no bounds. Head to the market. If anyone's got a gadget for stubborn bottles, it's old Mark's workshop!"],
+				"dialogue": [ "Behold! Your heart desires... a stone or something like this. Truly, my insight knows no bounds. Head to the market. If anyone's got a gadget for stubborn bottles, it's old Mark's workshop!" ],
 				"next_state": 6
 
 			  }
@@ -306,7 +281,7 @@
 
 		  "NPC": {
 
-			"does_has_dialogue_on": true,
+			"always_dialogue_on": false,
 
 			"defult_state": 0,
 
@@ -740,8 +715,7 @@
 
 		}
 	  }
-
-	  },
+	},
 
 	"Player": {
 	  "layer_ind": 3,
@@ -847,7 +821,6 @@
 	  "AnimatbleObj": {
 
 	  }
-
 	},
 
 	"fish_bg": {
@@ -938,6 +911,7 @@
 				}
 			  }
 			},
+			
 			"fish_left": {
 			  "RendrbleObject": {
 				"color": [ 1, 0, 1 ],

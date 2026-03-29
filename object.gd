@@ -20,7 +20,7 @@ func initiate(_class_type : String, obj_name : String, data : Dictionary):
 	object_name = obj_name
 	class_type = _class_type
 	
-	for class_type_name in data:#BroManager.class_order:
+	for class_type_name in data: #BroManager.class_order:
 		
 		#if data.has(class_type_name):
 		create_subclass(class_type_name, data[class_type_name])
@@ -48,22 +48,28 @@ func update_visuals():
 		print("type_of_rendering " + type_of_rendering + " is incorrect in object.gd")
 	
 	for image_char in export_image_str:
-		if image_char == '?':
-			export_image_arr[-1].append(' ')
-		elif image_char == '\n':
+		#if image_char == '?':
+			#export_image_arr[-1].append(' ')
+		if image_char == '\n':
 			export_image_arr.append([])
+		elif image_char == '\t':
+			export_image_arr[-1] += [' ', ' ', ' ', ' ']
 		else:
 			export_image_arr[-1].append(image_char)
 	
-	print("from ", type_of_rendering, " ", object_name, " update_visuals()")
+	if len(export_image_arr[-1]) < 1:
+		export_image_arr.pop_back()
+	
+	#print("from ", type_of_rendering, " ", object_name, " update_visuals()")
 	#print(export_image_str)
 	
 	var pos = Vector2i(subclasses["Position"].export_data["x"].value, subclasses["Position"].export_data["y"].value)
+	var add_paralax = subclasses["RendrbleObject"].export_data["add_paralax"].value
 	var color = []
 	for spinbox in subclasses["RendrbleObject"].export_data["color"]:
 		color.append(spinbox.value)
 		
-	main_main_editor.update_visuals(object_name, export_image_arr, pos, color)
+	main_main_editor.update_visuals(object_name, export_image_arr, pos, color, add_paralax)
 
 func create_subclass(class_type_name : String, data : Dictionary):
 	var subclass = SUBCLASS.instantiate()

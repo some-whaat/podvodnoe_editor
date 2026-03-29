@@ -50,6 +50,6 @@ current_tab = 0
 [node name="world_preview" parent="TabContainer" unique_id=467109489 instance=ExtResource("3_358bb")]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_wx0pn")
-fit_content = true
+bbcode_enabled = true
 
 [connection signal="pressed" from="main_editor/main_editor/HSplitContainer/save_butt" to="main_editor/main_editor" method="_on_save_butt_pressed"]
