@@ -16,6 +16,28 @@ var font_size = get_theme_font_size("normal_font_size")
 var char_width = font.get_string_size(" ", HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
 var line_height = font.get_height(font_size)
 
+#var colors = {
+	#[1, 1, 1] : Color.WHITE_SMOKE,
+	#[1, 0, 0] : Color.RED,
+	#[0, 1, 0] : Color.MEDIUM_SEA_GREEN,
+	#[0, 0, 1] : Color.CORNFLOWER_BLUE,
+	#[1, 1, 0] : Color.YELLOW,
+	#[1, 0, 1] : Color.PALE_VIOLET_RED,
+	#[0, 1, 1] : Color.AQUAMARINE
+#}
+
+var colors = {
+	[1, 1, 1] : "white",
+	[1, 0, 0] : "red",
+	[0, 1, 0] : "green",
+	[0, 0, 1] : "teal",
+	[1, 1, 0] : "yellow",
+	[1, 0, 1] : "purple",
+	[0, 1, 1] : "aqua",
+	[0, 0, 0] : "gray"
+}
+
+
 func _ready() -> void:
 	font = get_theme_font("normal_font")
 	font_size = get_theme_font_size("normal_font_size")
@@ -23,7 +45,7 @@ func _ready() -> void:
 	char_width = font.get_string_size(" ", HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
 	line_height = font.get_height(font_size)
 
-func update_visuals(obj_name : String, image_arr : Array, pos : Vector2i, color : Array, add_paralax):
+func update_visuals(obj_name : String, image_arr : Array, pos : Vector2i, color : Array[int], add_paralax):
 	print("update_visuals() ", obj_name)
 	#print(image_arr)
 	if not main_editor:
@@ -57,7 +79,9 @@ func render_visuals():
 		
 		var pic = visuals[image_arr_key][0]
 		var pos = visuals[image_arr_key][1]
-		#var color = visuals[image_arr_key][2]
+		var color = colors[visuals[image_arr_key][2]]
+		#var color = str(colors[visuals[image_arr_key][2]].ok_hsl_h)
+		#print(color)
 		var add_paralax = visuals[image_arr_key][3]
 		
 		var pic_x = 0
@@ -83,6 +107,9 @@ func render_visuals():
 				var ii := 0
 				
 				var ix : int = x_coord - half_pic_size.x
+				#var was_line_color = false
+				
+					
 				while ix <= x_coord + half_pic_size.x && ix < screen_size.x * 2:
 					if ii >= len(pic[i]) or iy >= len(output):
 						break;
@@ -91,14 +118,18 @@ func render_visuals():
 						#output_string[iy * screen_size.x * 2 + ix] = pic[i][ii]
 					#
 					if ix >= 0 and pic[i][ii] != '?' and len(output[iy]) > ix:
-						output[iy][ix] = pic[i][ii]
+						output[iy][ix] = "[color=" + color + "]" + pic[i][ii] + "[/color]"
+						#output[iy][ix] = pic[i][ii]
 						#output[iy * screen_size.x * 2 + ix] = pic[i][ii]
-						
 						#output_string[iy * screen_size.x + ix].Attributes = color_attr;
+						
+						#if not was_line_color:
+							#output[iy][ix] = "[color=" + color + "]" + output[iy][ix]
 					
 					ii += 1
 					ix += 1
-				
+				#if was_line_color:
+					#output[iy][ix-1] +="[/color]"
 			i += 1
 			iy += 1
 		

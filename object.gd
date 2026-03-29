@@ -70,9 +70,9 @@ func update_visuals():
 	var pos = Vector2i(subclasses["Position"].export_data["x"].value, subclasses["Position"].export_data["y"].value)
 	var add_paralax = subclasses["RendrbleObject"].export_data["add_paralax"].value
 	print(object_name, " add_paralax ", add_paralax)
-	var color = []
+	var color : Array[int] = []
 	for spinbox in subclasses["RendrbleObject"].export_data["color"]:
-		color.append(spinbox.value)
+		color.append(int(spinbox.value))
 		
 	main_main_editor.update_visuals(object_name, export_image_arr, pos, color, add_paralax)
 
