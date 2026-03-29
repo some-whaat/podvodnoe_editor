@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func update_visuals(obj_name : String, image_arr : Array, pos : Vector2i, color : Array, add_paralax):
 	print("update_visuals() ", obj_name)
-	print(image_arr)
+	#print(image_arr)
 	if not main_editor:
 		await get_tree().process_frame
 	visuals[obj_name] = [image_arr, pos, color, add_paralax]
@@ -163,7 +163,7 @@ func _on_resized() -> void:
 	#
 	#last_resize_time = Time.get_ticks_usec()
 
-func _input(event):
+func _input(_event):
 	var inp_vec = Vector2i(Input.get_vector("ui_left", "ui_right", "ui_down", "ui_up"))
 	
 	if inp_vec.length() > 0:

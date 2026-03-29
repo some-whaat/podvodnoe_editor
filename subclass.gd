@@ -97,7 +97,7 @@ func create_checkbutton_and_lable_return_checkbutton(parent : Control, lable_tex
 	
 	return checkbutton
 
-func create_spinbox_and_lable_return_spinbox(parent : Control, lable_text : String, curr_value : int) -> SpinBox:
+func create_spinbox_and_lable_return_spinbox(parent : Control, lable_text : String, curr_value) -> SpinBox:
 	var hbox_cont = HBoxContainer.new()
 	parent.add_child(hbox_cont)
 	hbox_cont.set_meta("title", lable_text)
@@ -107,6 +107,7 @@ func create_spinbox_and_lable_return_spinbox(parent : Control, lable_text : Stri
 	hbox_cont.add_child(lable)
 	
 	var spinbox = SpinBox.new()
+	spinbox.step = 0.1
 	spinbox.value = curr_value
 	hbox_cont.add_child(spinbox)
 	spinbox.set_meta("title", lable_text)

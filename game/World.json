@@ -15,24 +15,6 @@
 
 	  "Picture": {
 
-		"frederic": {
-
-		  "Position": {
-			"x": 0,
-			"y": 0
-		  },
-
-		  "RendrbleObject": {
-			"color": [ 1, 0, 1 ],
-			"is_render": true,
-			"add_paralax": 0
-		  },
-
-		  "Picture": {
-			"sprite_filepame": "scull.txt"
-		  }
-		},
-
 		"beach1": {
 
 		  "Position": {
@@ -51,31 +33,11 @@
 			"sprite_filepame": "beach_s.txt"
 		  }
 		},
-
-		"dino": {
-
-		  "Position": {
-			"x": -22,
-			"y": -20
-		  },
-
-		  "RendrbleObject": {
-
-			"color": [ 0, 1, 1 ],
-			"is_render": true,
-			"add_paralax": 0.8
-		  },
-
-		  "Picture": {
-			"sprite_filepame": "dino.txt"
-		  }
-		},
-
 		"bottom": {
 
 		  "Position": {
 			"x": 0,
-			"y": -50
+			"y": 0
 		  },
 
 		  "RendrbleObject": {
@@ -845,6 +807,24 @@
 	  "layer_ind": 1,
 
 	  "AnimatbleObj": {
+
+		"seaweed": {
+		  "Position": {
+			"x": 0,
+			"y": -10
+		  },
+
+		  "RendrbleObject": {
+			"color": [ 0, 1, 0 ],
+			"is_render": false,
+			"add_paralax": -0.5
+		  },
+
+		  "AnimatbleObj": {
+			"animated_sprite_filepame": "seaweed.txt",
+			"anim_speed": 88
+		  }
+		}
 
 	  }
 

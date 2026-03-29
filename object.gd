@@ -44,6 +44,8 @@ func update_visuals():
 		image_filename = subclasses["AnimatbleObj"].export_data["animated_sprite_filepame"].curr_file
 		export_image_str = BroManager.load_text_file( "res://game/" + image_filename)
 		export_image_str = export_image_str.split('7')[0]
+		#print(export_image_str)
+		#print(export_image_str.split())
 	else:
 		print("type_of_rendering " + type_of_rendering + " is incorrect in object.gd")
 	
@@ -54,6 +56,8 @@ func update_visuals():
 			export_image_arr.append([])
 		elif image_char == '\t':
 			export_image_arr[-1] += [' ', ' ', ' ', ' ']
+		elif image_char == '\r':
+			pass
 		else:
 			export_image_arr[-1].append(image_char)
 	
@@ -65,6 +69,7 @@ func update_visuals():
 	
 	var pos = Vector2i(subclasses["Position"].export_data["x"].value, subclasses["Position"].export_data["y"].value)
 	var add_paralax = subclasses["RendrbleObject"].export_data["add_paralax"].value
+	print(object_name, " add_paralax ", add_paralax)
 	var color = []
 	for spinbox in subclasses["RendrbleObject"].export_data["color"]:
 		color.append(spinbox.value)
