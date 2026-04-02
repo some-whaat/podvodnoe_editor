@@ -3,115 +3,115 @@
 
   "Picture": {
 
-	"frederic": {
+    "frederic": {
 
-	  "Position": {
-		"x": 0,
-		"y": 0
-	  },
+      "Position": {
+        "x": 0,
+        "y": 0
+      },
 
-	  "RendrbleObject": {
-		"color": [ 1, 0, 1 ],
-		"is_render": true,
-		"add_paralax": 0
-	  },
+      "RendrbleObject": {
+        "color": [ 1, 0, 1 ],
+        "is_render": true,
+        "add_paralax": 0
+      },
 
-	  "Picture": {
-		"animated_sprite_filepame": "scull.txt"
-	  }
-	},
+      "Picture": {
+        "animated_sprite_filepame": "scull.txt"
+      }
+    },
 
-	"beach1": {
+    "beach1": {
 
-	  "Position": {
-		"x": 0,
-		"y": 50
-	  },
+      "Position": {
+        "x": 0,
+        "y": 50
+      },
 
-	  "RendrbleObject": {
+      "RendrbleObject": {
 
-		"color": [ 1, 0, 1 ],
-		"is_render": true,
-		"add_paralax": 0.5
-	  },
+        "color": [ 1, 0, 1 ],
+        "is_render": true,
+        "add_paralax": 0.5
+      },
 
-	  "Picture": {
-		"sprite_filepame": "beach_s.txt"
-	  }
-	},
+      "Picture": {
+        "sprite_filepame": "beach_s.txt"
+      }
+    },
 
-	"dino": {
+    "dino": {
 
-	  "Position": {
-		"x": -22,
-		"y": -20
-	  },
+      "Position": {
+        "x": -22,
+        "y": -20
+      },
 
-	  "RendrbleObject": {
+      "RendrbleObject": {
 
-		"color": [ 0, 1, 1 ],
-		"is_render": true,
-		"add_paralax": 0.8
-	  },
+        "color": [ 0, 1, 1 ],
+        "is_render": true,
+        "add_paralax": 0.8
+      },
 
-	  "Picture": {
-		"sprite_filepame": "dino.txt"
-	  }
-	},
+      "Picture": {
+        "sprite_filepame": "dino.txt"
+      }
+    },
 
-	"bottom": {
+    "bottom": {
 
-	  "Position": {
-		"x": 0,
-		"y": -50
-	  },
+      "Position": {
+        "x": 0,
+        "y": -50
+      },
 
-	  "RendrbleObject": {
+      "RendrbleObject": {
 
-		"color": [ 1, 1, 0 ],
-		"is_render": true,
-		"add_paralax": 0.5
-	  },
+        "color": [ 1, 1, 0 ],
+        "is_render": true,
+        "add_paralax": 0.5
+      },
 
-	  "Picture": {
-		"sprite_filepame": "bottom.txt"
-	  }
-	},
+      "Picture": {
+        "sprite_filepame": "bottom.txt"
+      }
+    },
 
-	"bottom1": {
+    "bottom1": {
 
-	  "Position": {
-		"x": 195,
-		"y": -53
-	  },
+      "Position": {
+        "x": 195,
+        "y": -53
+      },
 
-	  "RendrbleObject": {
-		"color": [ 1, 1, 0 ],
-		"is_render": true,
-		"add_paralax": 0.5
-	  },
+      "RendrbleObject": {
+        "color": [ 1, 1, 0 ],
+        "is_render": true,
+        "add_paralax": 0.5
+      },
 
-	  "Picture": {
-		"sprite_filepame": "bottom2.txt"
-	  }
-	},
+      "Picture": {
+        "sprite_filepame": "bottom2.txt"
+      }
+    },
 
-	"shashalashik": {
+    "shashalashik": {
 
-	  "Position": {
-		"x": 250,
-		"y": -53
-	  },
+      "Position": {
+        "x": 250,
+        "y": -53
+      },
 
-	  "RendrbleObject": {
-		"color": [ 0, 1, 0 ],
-		"is_render": true,
-		"add_paralax": 0.5
-	  },
+      "RendrbleObject": {
+        "color": [ 0, 1, 0 ],
+        "is_render": true,
+        "add_paralax": 0.5
+      },
 
-	  "Picture": {
-		"sprite_filepame": "shashalashik.txt"
-	  }
-	}
+      "Picture": {
+        "sprite_filepame": "shashalashik.txt"
+      }
+    }
   }
 }

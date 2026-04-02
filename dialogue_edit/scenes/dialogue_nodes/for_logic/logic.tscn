@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bardtwyd1pv8a"]
 
 [ext_resource type="Script" uid="uid://b5yjwlfiguu3m" path="res://dialogue_edit/scenes/dialogue_nodes/for_logic/logic.gd" id="1_pxg4h"]
+[ext_resource type="PackedScene" uid="uid://0l13jpibk0vc" path="res://dialogue_edit/scenes/dialogue_nodes/for_action/change_atts.tscn" id="2_vsdrk"]
 
 [node name="logic" type="GraphNode" unique_id=372851452]
 offset_right = 9.0
@@ -16,7 +17,52 @@ slot/0/right_type = 0
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = true
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color(1, 1, 1, 1)
+slot/3/left_icon = null
+slot/3/right_enabled = false
+slot/3/right_type = 0
+slot/3/right_color = Color(1, 1, 1, 1)
+slot/3/right_icon = null
+slot/3/draw_stylebox = true
+slot/4/left_enabled = false
+slot/4/left_type = 0
+slot/4/left_color = Color(1, 1, 1, 1)
+slot/4/left_icon = null
+slot/4/right_enabled = false
+slot/4/right_type = 0
+slot/4/right_color = Color(1, 1, 1, 1)
+slot/4/right_icon = null
+slot/4/draw_stylebox = true
 script = ExtResource("1_pxg4h")
+
+[node name="true_state" type="Label" parent="." unique_id=790497501]
+layout_mode = 2
+text = "true_state"
+
+[node name="false_state" type="Label" parent="." unique_id=1486026702]
+layout_mode = 2
+text = "false_state
+"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=2123005089]
 layout_mode = 2
@@ -26,8 +72,23 @@ layout_mode = 2
 text = "+ item check"
 
 [node name="add_mission_check" type="Button" parent="HSplitContainer" unique_id=543819753]
+visible = false
 layout_mode = 2
 text = "+ mission check"
+
+[node name="attributes_check" type="HSplitContainer" parent="." unique_id=771371948]
+visible = false
+layout_mode = 2
+
+[node name="add_attr" type="Button" parent="attributes_check" unique_id=575189331]
+layout_mode = 2
+text = "+ add item(s)"
+
+[node name="attr_option" type="OptionButton" parent="attributes_check" unique_id=1550705526]
+layout_mode = 2
+
+[node name="check_atts" parent="." unique_id=817169584 instance=ExtResource("2_vsdrk")]
+layout_mode = 2
 
 [connection signal="pressed" from="HSplitContainer/add_item_check" to="." method="_on_add_item_check_pressed"]
 [connection signal="pressed" from="HSplitContainer/add_mission_check" to="." method="_on_add_mission_check_pressed"]

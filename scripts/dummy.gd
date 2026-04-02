@@ -4,4 +4,4 @@ extends GraphNode
 const type : BroManager.DialNodeType = BroManager.DialNodeType.DUMMY
 
 func set_data(_data : Dictionary):
-	pass
+    pass

@@ -8,6 +8,7 @@
 [node name="npc_action" type="GraphNode" unique_id=1114453773]
 offset_right = 9.0
 offset_bottom = 55.0
+title = "npc action"
 slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
@@ -22,18 +23,6 @@ script = ExtResource("1_yxupn")
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2052953713]
 layout_mode = 2
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer" unique_id=323394188]
-visible = false
-layout_mode = 2
-
-[node name="add_item" type="Button" parent="VBoxContainer/HSplitContainer" unique_id=2065022249]
-visible = false
-layout_mode = 2
-text = "+ add item(s)"
-
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HSplitContainer" unique_id=77564105]
-layout_mode = 2
-
 [node name="add_items" parent="VBoxContainer" unique_id=1331119675 instance=ExtResource("2_v4wl5")]
 layout_mode = 2
 
@@ -42,5 +31,3 @@ layout_mode = 2
 
 [node name="change_atts" parent="VBoxContainer" unique_id=817169584 instance=ExtResource("4_k62su")]
 layout_mode = 2
-
-[connection signal="pressed" from="VBoxContainer/HSplitContainer/add_item" to="." method="_on_add_item_pressed"]

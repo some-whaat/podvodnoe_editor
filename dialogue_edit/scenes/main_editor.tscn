@@ -42,6 +42,10 @@ text = "import from file"
 layout_mode = 2
 text = "save"
 
+[node name="play_butt" type="Button" parent="main_editor/main_editor/HSplitContainer" unique_id=213033166]
+layout_mode = 2
+text = "play the game"
+
 [node name="TabContainer" type="TabContainer" parent="." unique_id=687944429]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -53,3 +57,4 @@ theme_override_fonts/normal_font = ExtResource("4_wx0pn")
 bbcode_enabled = true
 
 [connection signal="pressed" from="main_editor/main_editor/HSplitContainer/save_butt" to="main_editor/main_editor" method="_on_save_butt_pressed"]
+[connection signal="pressed" from="main_editor/main_editor/HSplitContainer/play_butt" to="." method="_on_play_butt_pressed"]

@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b6tgk7xs7vuck" path="res://spin_box_with_get_data.gd" id="1_mli2j"]
 
-[node name="SpinBoxWithGetData" type="SpinBox" unique_id=30295857]
-offset_right = 86.5
-offset_bottom = 31.0
+[node name="SpinBoxWithGetData" type="HBoxContainer" unique_id=403652446]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mli2j")
+
+[node name="SpinBoxWithGetData" type="SpinBox" parent="." unique_id=30295857]
+layout_mode = 2
 min_value = -999.0
 max_value = 999.0
-script = ExtResource("1_mli2j")

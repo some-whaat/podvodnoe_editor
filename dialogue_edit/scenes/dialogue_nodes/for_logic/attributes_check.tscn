@@ -18,7 +18,7 @@ layout_mode = 2
 
 [node name="add_missions_check" type="Button" parent="attributes_check/HSplitContainer" unique_id=1537833489]
 layout_mode = 2
-text = "+ mission check"
+text = "+ attribute check"
 
 [node name="add_rep_check" type="Button" parent="attributes_check/HSplitContainer" unique_id=397405912]
 layout_mode = 2

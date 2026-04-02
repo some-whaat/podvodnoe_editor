@@ -26,6 +26,8 @@ text = "needed item id: "
 
 [node name="item_id" type="SpinBox" parent="item_check/item_id" unique_id=266364868]
 layout_mode = 2
+min_value = -999.0
+max_value = 999.0
 
 [node name="item_state" type="HSplitContainer" parent="item_check" unique_id=388290637]
 layout_mode = 2
