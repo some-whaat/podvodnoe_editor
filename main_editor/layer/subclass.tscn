@@ -9,3 +9,6 @@ script = ExtResource("1_fchku")
 
 [node name="subclass_vbox" type="VBoxContainer" parent="." unique_id=994676187]
 layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="." unique_id=1059664129]
+layout_mode = 2

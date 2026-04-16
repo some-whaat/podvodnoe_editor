@@ -18,6 +18,7 @@ func initiate(class_type_name : String, _data : Dictionary, parent_name : String
     
     match class_type_name:
         "Position":
+            print(data, data["y"])
             var x = create_spinbox_and_lable_return_spinbox(subclass_vbox, "x", data["x"])
             var y = create_spinbox_and_lable_return_spinbox(subclass_vbox, "y", data["y"])
             export_data["x"] = x
@@ -107,6 +108,8 @@ func create_spinbox_and_lable_return_spinbox(parent : Control, lable_text : Stri
     hbox_cont.add_child(lable)
     
     var spinbox = SpinBox.new()
+    spinbox.min_value = -999
+    spinbox.max_value = 999
     spinbox.step = 0.1
     spinbox.value = curr_value
     hbox_cont.add_child(spinbox)

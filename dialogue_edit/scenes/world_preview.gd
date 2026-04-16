@@ -17,7 +17,7 @@ var char_width = font.get_string_size(" ", HORIZONTAL_ALIGNMENT_LEFT, -1, font_s
 var line_height = font.get_height(font_size)
 
 var scrolling_speed = 2
-var show_colors := true
+@export var show_colors := false
 
 #var colors = {
     #[1, 1, 1] : Color.WHITE_SMOKE,
