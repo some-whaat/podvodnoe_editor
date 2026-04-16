@@ -16,5 +16,5 @@ func set_filepath(filepath : String):
     curr_file = filepath
     current_filename.text = filepath
 
-#func get_path() -> String:
-    #return curr_file
+func get_curr_path() -> String:
+    return curr_file

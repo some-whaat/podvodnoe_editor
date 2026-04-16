@@ -149,7 +149,7 @@ func get_connections_outgoing_from_node(node : StringName) -> Array[Dictionary]:
     return res
 
 
-func save_everything():
+func save_everything() -> Dictionary:
     var save_data : Dictionary
     
     var used_inds : Array[int] = []
@@ -202,6 +202,7 @@ func save_everything():
     
     #var pretty_output = JSON.stringify(big_json_data)
     BroManager.save_to_json_file(big_json_data, BroManager.the_path)
+    return save_data
 
 func find_connections_from_port_from_node(_connections : Array[Dictionary], from_node : StringName, from_port : int) -> Array[Dictionary]:
     var res : Array[Dictionary]

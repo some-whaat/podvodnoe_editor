@@ -5,6 +5,8 @@ var layer_ind : int
 var layer_class_arrs : Dictionary # array by classes like Picture, NPC, ecs
 var layer_class_arrs_objs : Dictionary
 
+var objects : Dictionary
+
 const OBJECT = preload("res://main_editor/layer/object.tscn")
 @onready var layer_vbox: VBoxContainer = $layer_vbox
 
@@ -35,3 +37,15 @@ func create_object(class_type : String, obj_name : String, data : Dictionary):
     var new_obj = OBJECT.instantiate()
     layer_vbox.add_child(new_obj)
     new_obj.initiate(class_type, obj_name, data)
+    
+    objects[obj_name] = new_obj
+
+func get_data() -> Dictionary:
+    var ret_data = {}
+    ret_data[title] = {}
+    for object in objects:
+        var data : Dictionary = objects[object].get_data()
+        if not data.is_empty():
+            ret_data[title][object] = objects[object].get_data()
+    
+    return ret_data

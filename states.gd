@@ -29,3 +29,8 @@ func _on_edit_states_button_pressed() -> void:
         dial_grath.import_from_states_data(states_data, defult_state, npc_name, "NPCs")
     else:
         main_main_editor.switch_to_tab_by_title(dial_grath_name)
+
+func get_data() -> Dictionary:
+    if not dial_grath:
+        return states_data
+    return dial_grath.get_data()

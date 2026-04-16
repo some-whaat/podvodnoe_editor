@@ -18,7 +18,6 @@ func initiate(class_type_name : String, _data : Dictionary, parent_name : String
     
     match class_type_name:
         "Position":
-            print(data, data["y"])
             var x = create_spinbox_and_lable_return_spinbox(subclass_vbox, "x", data["x"])
             var y = create_spinbox_and_lable_return_spinbox(subclass_vbox, "y", data["y"])
             export_data["x"] = x
@@ -78,8 +77,54 @@ func initiate(class_type_name : String, _data : Dictionary, parent_name : String
             states.npc_name = parent_name
             states.defult_state = data["defult_state"] if data.has("defult_state") else 0
             states.states_data = data["states"]
+            export_data["states"] = states
+            
         
+func get_data() -> Dictionary:
+    var return_data = {}
+    
+    match class_type:
+        "Position":
+            return_data["x"] = export_data["x"].value
+            return_data["y"] = export_data["y"].value
+            
+        "RendrbleObject":
+            # "color": [ 0, 0, 1 ]
+            return_data["color"] = [export_data["color"][0].value, export_data["color"][1].value, export_data["color"][2].value]
+            
+            # "is_render": true
+            return_data["is_render"] = export_data["is_render"].toggle_mode
+            
+            # "add_paralax": 0
+            return_data["add_paralax"] = export_data["add_paralax"].value
+            
+        "Picture":
+            # "sprite_filepame": "beach_s.txt"
+            return_data["sprite_filepame"] = export_data["sprite_filepame"].get_curr_path()
+            
+            
+        "AnimatbleObj":
+            # "animated_sprite_filepame": "big_fish.txt"
+            return_data["animated_sprite_filepame"] = export_data["animated_sprite_filepame"].get_curr_path()
+            
+            # "anim_speed": 77
+            return_data["anim_speed"] = export_data["anim_speed"].value
+            
+        "MovingObj":
+            '''!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'''
+            pass
+            '''!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'''
+            
+        "NPC":
+            # "does_has_dialogue_on": true
+            if export_data.has("does_has_dialogue_on"):
+                return_data["does_has_dialogue_on"] = export_data["does_has_dialogue_on"].toggle_mode
+            
+            # "defult_state": 0,
+            #"states": {}
+            return_data["states"] = export_data["states"].get_data()
         
+    return return_data
 
 
 func create_checkbutton_and_lable_return_checkbutton(parent : Control, lable_text : String, curr_value : bool) -> CheckButton:

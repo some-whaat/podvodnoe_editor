@@ -83,3 +83,12 @@ func create_subclass(class_type_name : String, data : Dictionary):
     
     subclasses[class_type_name] = subclass
     
+func get_data() -> Dictionary:
+    var ret_data = {}
+    for subclass in subclasses:
+        var data : Dictionary = subclasses[subclass].get_data()
+        if not data.is_empty():
+            ret_data[subclass] = subclasses[subclass].get_data()
+    
+    return ret_data
+        
